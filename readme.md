@@ -1,0 +1,1 @@
+npx pod-install ( cd ios => pod install)
