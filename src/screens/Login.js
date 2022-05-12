@@ -63,7 +63,7 @@ const Item = ({ title, icon }) => (
 
 const Login = ({ route, navigation }) => {
   const dispatch = useDispatch();
-  const [userName, setUsername] = useState("hanoifund");
+  const [userName, setUsername] = useState("AB0029019");
   const [passWord, setPassWord] = useState("123");
   const [checkEye, setCheckEye] = useState(true);
   const [checkUser, setCheckUser] = useState(false)
