@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>951555123769-hskv0hhgrh7bhk5ptnk47bs3q0vbsph2.apps.googleusercontent.com</string>
+	<string>951555123769-guu0r99ohumj2okflhl33qiq46ri39o5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.951555123769-hskv0hhgrh7bhk5ptnk47bs3q0vbsph2</string>
+	<string>com.googleusercontent.apps.951555123769-guu0r99ohumj2okflhl33qiq46ri39o5</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB8cnkh8XA0_tbvmikd7jgnrsIvsOY8ipA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.vveco.appvfund</string>
+	<string>com.vvecoinc.appvfund</string>
 	<key>PROJECT_ID</key>
 	<string>creditfund-8a4d9</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:951555123769:ios:1bdde4c04091a932c13be8</string>
+	<string>1:951555123769:ios:503e2ab82b224e4cc13be8</string>
 </dict>
 </plist>

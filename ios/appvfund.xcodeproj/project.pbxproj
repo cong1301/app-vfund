@@ -39,6 +39,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = appvfund/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-appvfund-appvfundTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appvfund-appvfundTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F898C3FAD5546BB80D7E03D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		25390D21282FF32700365A45 /* appvfund.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = appvfund.entitlements; path = appvfund/appvfund.entitlements; sourceTree = "<group>"; };
 		254B73BAC598490987479293 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		25F9D818282D4853002B3551 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D29527ADC2D4961984CEE60 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 		13B07FAE1A68108700A75B9A /* appvfund */ = {
 			isa = PBXGroup;
 			children = (
+				25390D21282FF32700365A45 /* appvfund.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -541,19 +543,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = appvfund/appvfund.entitlements;
+				CURRENT_PROJECT_VERSION = 0.0.2;
+				DEVELOPMENT_TEAM = N4QRYLZ7PM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = appvfund/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vveco.appvfund;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vvecoinc.appvfund;
 				PRODUCT_NAME = appvfund;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -567,18 +572,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = appvfund/appvfund.entitlements;
+				CURRENT_PROJECT_VERSION = 0.0.2;
+				DEVELOPMENT_TEAM = N4QRYLZ7PM;
 				INFOPLIST_FILE = appvfund/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vveco.appvfund;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vvecoinc.appvfund;
 				PRODUCT_NAME = appvfund;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
