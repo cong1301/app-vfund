@@ -12,80 +12,83 @@ export default function Profile({ route, navigation }) {
   return (
 
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        style={styles.container}>
-    
-        <View style={styles.avatars} >
-            <Image
-                style={{ borderWidth: 1, 
-                    borderColor: '#024b04', 
-                    padding: 10,
-                    borderRadius: 100,
-                    backgroundColor: '#fff',
-                    width: 90,
-                    height: 90,
-                    alignItems: 'center',}}
-                source={require('../assets/icondangnhap/ducminh.jpg')}
-            />
-                    {/* <Icon color='#cdface' name="user" size={60} /> */}
-            <TouchableOpacity >
-                <Text style={{fontSize: 16, color: '#024b04', padding: 10, textDecorationLine: 'underline'}}>Đổi ảnh đại diện</Text>
-            </TouchableOpacity>
-        </View>
-       
-
-        <View style={styles.info}>
-            <View 
-                style={styles.infoView} >
-                <View style={styles.input}>
-                    <Text>Họ và tên</Text>
-                    <TextInput
-                        placeholder="Họ và tên"
-                    >
-                        <Text>{`${data?.name}`}</Text>
-                    </TextInput>
-                </View>
-                
-                
-                <View style={styles.input}>
-                    <Text>Số điện thoại</Text>
-                    <TextInput
-                        placeholder="Số điện thoại"
-                    >
-                        <Text>{`${data?.phone}`}</Text>
-                    </TextInput>
-                </View>
-
-
-                
-                <View style={styles.input}>
-                    <Text>Địa chỉ</Text>
-                    <TextInput
-                        placeholder="Nhập địa địa chỉ"
-                    >
-
-                    </TextInput>
-                </View>
-
-                <View style={styles.input}>
-                    <Text>Email</Text>
-                    <TextInput
-                        placeholder="Nhập địa Email"
-                    >
-                        
-                    </TextInput>
-                </View>
-
-                
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            style={styles.container}>
+        
+            <View style={styles.avatars} >
+                <Image
+                    style={{ borderWidth: 1, 
+                        borderColor: '#024b04', 
+                        padding: 10,
+                        borderRadius: 100,
+                        backgroundColor: '#fff',
+                        width: 90,
+                        height: 90,
+                        alignItems: 'center',}}
+                    source={require('../assets/icondangnhap/ducminh.jpg')}
+                />
+                        {/* <Icon color='#cdface' name="user" size={60} /> */}
+                <TouchableOpacity >
+                    <Text style={{fontSize: 16, color: '#024b04', padding: 10, textDecorationLine: 'underline'}}>Đổi ảnh đại diện</Text>
+                </TouchableOpacity>
             </View>
-        </View>
+        
+
+            <View style={styles.info}>
+                <View 
+                    style={styles.infoView} >
+                    <View style={styles.input}>
+                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Họ và tên</Text>
+                        <TextInput
+                            placeholder="Họ và tên"
+                            placeholderTextColor={'#948d8d'}
+                        >
+                            <Text>{`${data?.name}`}</Text>
+                        </TextInput>
+                    </View>
+                    
+                    
+                    <View style={styles.input}>
+                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Số điện thoại</Text>
+                        <TextInput
+                            placeholder="Số điện thoại"
+                            placeholderTextColor={'#948d8d'}
+                        >
+                            <Text>{`${data?.phone}`}</Text>
+                        </TextInput>
+                    </View>
+
+
+                    
+                    <View style={styles.input}>
+                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Địa chỉ</Text>
+                        <TextInput
+                            placeholder="Nhập địa địa chỉ"
+                            placeholderTextColor={'#948d8d'}
+                        >
+                        <Text>{`${data?.address}`}</Text>
+                        </TextInput>
+                    </View>
+
+                    <View style={styles.input}>
+                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Email</Text>
+                        <TextInput
+                            placeholder="Nhập địa Email"
+                            placeholderTextColor={'#948d8d'}
+                        >
+                            
+                        </TextInput>
+                    </View>
+
+                </View>
+            </View>
             <TouchableOpacity style={styles.buttons}>
                 <Text style={{fontSize: 18, color: '#fff', }} >Lưu lại</Text>
             </TouchableOpacity>
-    
-    </ScrollView>
+        
+        </ScrollView>
     </TouchableWithoutFeedback>
   )
 }
@@ -106,19 +109,25 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         marginLeft: 20,
         marginRight: 20,
+        borderColor: '#024b04',
     },
     infoView: {
-        marginHorizontal: 20,
+        // marginHorizontal: 20,
+        marginLeft: 20,
+        marginRight: 20,
     },
     input: {
-        marginTop: 20,
+        marginTop: 15,
         borderWidth: 1,
         borderColor: '#fff',
-        borderBottomColor: '#d4d6da'
+        borderBottomColor: '#024b04',
+        marginBottom: 15,
+        paddingBottom: 5,
     },
     buttons: {
-        marginHorizontal: 20,
-        marginTop: 30,
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 25,
         marginBottom: 10,
         borderWidth: 1,
         borderColor: '#024b04',

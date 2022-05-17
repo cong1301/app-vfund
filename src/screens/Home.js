@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, ImageBackground, Text, TouchableOpacity, Dimensions, Alert, Pressable, Modal, ScrollView } from 'react-native'
+import { View, StyleSheet, Image, ImageBackground, Text, TouchableOpacity, Dimensions, Alert, Pressable, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Images from '../assets';
 import axios from 'axios';
@@ -10,6 +10,9 @@ import { clearState, insFCMYtokenAPI } from '../store/AuthSlice';
 import messaging from '@react-native-firebase/messaging';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '../screens/Toast';
+
+import Modal from "react-native-modal";
+import ModalScreen from "./ModalScreen";
 // import NumberFormat from 'react-number-format';
 const width = Dimensions.get('window').width;
 
@@ -18,7 +21,7 @@ const Home = ({ route, navigation }) => {
   const data = useSelector(store => store.product.dataInfoUser)
   const dispatch = useDispatch()
   const [mess, setMess] = useState({ tk: '', sd: '' });
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
 
 
   const getToken = async () => {
@@ -71,9 +74,23 @@ const Home = ({ route, navigation }) => {
     dispatch(clearState())
   }
 
+  const [updateModalVisible, setupdateModalVisible] = useState(false);
+
+  const changeModalVisible = (e) => {
+    setupdateModalVisible(e)
+  }
+
   return (
 
     <ScrollView style={styles.container}>
+        <Modal
+            isVisible={updateModalVisible}
+            nRequestClose={() => changeModalVisible(false)}
+        >
+          <ModalScreen 
+            changeModalVisible={changeModalVisible}
+          />
+        </Modal>
       <View style={styles.box}>
         <View style={styles.box1}>
           <ImageBackground source={Images.backgroundhome} resizeMode="cover">
@@ -142,7 +159,7 @@ const Home = ({ route, navigation }) => {
 
         <View style={styles.box2}>
           <View style={styles.content}>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -159,7 +176,7 @@ const Home = ({ route, navigation }) => {
               </View>
               <Text style={{ marginTop: 5, fontSize: 13 }}>Tài Khoản</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -172,7 +189,7 @@ const Home = ({ route, navigation }) => {
               </View>
               <Text style={{ marginTop: 5, fontSize: 13 }}>Thanh toán</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -187,7 +204,7 @@ const Home = ({ route, navigation }) => {
             </TouchableOpacity>
           </View>
           <View style={styles.content}>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -200,7 +217,7 @@ const Home = ({ route, navigation }) => {
               </View>
               <Text style={{ marginTop: 5, fontSize: 13 }}>Tiết kiệm</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -213,7 +230,7 @@ const Home = ({ route, navigation }) => {
               </View>
               <Text style={{ marginTop: 5, fontSize: 13 }}>Đầu tư</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ alignItems: 'center', width: '27%' }}>
+            <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
               <View
                 style={{
                   borderWidth: 1,
@@ -335,49 +352,49 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 30,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    width: '90%',
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#05610a",
-    paddingHorizontal: 20
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 10,
-    textAlign: "center"
-  }
-});
+//   centeredView: {
+//     flex: 1,
+//     justifyContent: 'flex-start',
+//     alignItems: "center",
+//     marginTop: 22
+//   },
+//   modalView: {
+//     width: '90%',
+//     margin: 20,
+//     backgroundColor: "white",
+//     borderRadius: 20,
+//     padding: 35,
+//     alignItems: "flex-start",
+//     shadowColor: "#000",
+//     shadowOffset: {
+//       width: 0,
+//       height: 2
+//     },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 4,
+//     elevation: 5
+//   },
+//   button: {
+//     borderRadius: 20,
+//     padding: 10,
+//     elevation: 2
+//   },
+//   buttonOpen: {
+//     backgroundColor: "#F194FF",
+//   },
+//   buttonClose: {
+//     backgroundColor: "#05610a",
+//     paddingHorizontal: 20
+//   },
+//   textStyle: {
+//     color: "white",
+//     fontWeight: "bold",
+//     textAlign: "center"
+//   },
+//   modalText: {
+//     marginBottom: 10,
+//     textAlign: "center"
+//   }
+ });
 
 export default Home

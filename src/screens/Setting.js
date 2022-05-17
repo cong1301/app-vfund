@@ -16,6 +16,9 @@ import {
 } from 'antd-mobile-icons'
 
 import Modal from "react-native-modal";
+import ModalScreen from "./ModalScreen";
+
+
 
 const StackSetting = createNativeStackNavigator();
 export default function Setting({ route, navigation }) {
@@ -29,11 +32,11 @@ export default function Setting({ route, navigation }) {
     navigation.navigate('Profile');
   }
 
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [updateModalVisible, setupdateModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  const changeModalVisible = (e) => {
+    setupdateModalVisible(e)
+  }
 
   return (
     <StackSetting.Navigator>
@@ -68,36 +71,15 @@ export default function Setting({ route, navigation }) {
   function SettingMain() {
     return (
       <View>
-
         <Modal
-          isVisible={isModalVisible}
+            isVisible={updateModalVisible}
+            nRequestClose={() => changeModalVisible(false)}
         >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: '100%', }}>
-                <Image style={{ width: 50, height: 50, marginRight: 15 }} source={Images.logo} />
-                <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16, }}>Thông Báo!</Text>
-              </View>
-              <View style={{ alignItems: 'center', }}>
-                <View style={{ flexDirection: 'row', padding: 15, alignItems: 'center' }}>
-                  {/* <Icon name="wrench" color="red" size={30}  />
-                  <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 20, marginLeft: 15,}}>Hệ thống đang cập nhật</Text> */}
-                  <Image style={{ width: '100%', height: 150, marginRight: 15 }} source={Images.imgbaotri} />
-                </View>
-              </View>
-
-
-              <View style={{ width: '100%', alignItems: 'flex-end', }}>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={toggleModal}
-                >
-                  <Text style={styles.textStyle}>OK</Text>
-                </Pressable>
-              </View>
-            </View>
-          </View>
+          <ModalScreen 
+            changeModalVisible={changeModalVisible}
+          />
         </Modal>
+        
         <ImageBackground source={Images.backgroundhome} resizeMode="cover">
           <View style={styles.containerr}>
             <View style={styles.header}>
@@ -200,7 +182,7 @@ export default function Setting({ route, navigation }) {
             <Icon name="angle-right" size={24} color="#05610a" />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={toggleModal} style={{
+          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
             marginVertical: 5,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -219,7 +201,7 @@ export default function Setting({ route, navigation }) {
           </TouchableOpacity>
 
 
-          <TouchableOpacity onPress={toggleModal} style={{
+          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
             marginVertical: 5,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -236,7 +218,7 @@ export default function Setting({ route, navigation }) {
             </View>
             <Icon name="angle-right" size={24} color="#05610a" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={toggleModal} style={{
+          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
             marginVertical: 5,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -266,49 +248,6 @@ export default function Setting({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    width: '92%',
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 20,
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#05610a",
-    paddingHorizontal: 20
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 10,
-    textAlign: "center"
-  },
   containerr: {
     height: 160,
   },
