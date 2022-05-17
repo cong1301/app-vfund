@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { signInApi } from '../store/AuthSlice'
 import Images from '../assets';
 import * as Animatable from 'react-native-animatable';
-
+import ModalScreen from "./ModalScreen";
 
 const DATA = [
   {
@@ -50,16 +50,8 @@ const DATA = [
   },
 ];
 
-const Item = ({ title, icon }) => (
-  <TouchableOpacity>
-    <View style={styles.item}>
-      <View style={styles.itemLogo}>
-        <Icon style={styles.userLogo} size={27} color="#024b04" name={icon} />
-      </View>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  </TouchableOpacity>
-);
+
+
 
 const Login = ({ route, navigation }) => {
   const dispatch = useDispatch();
@@ -69,6 +61,16 @@ const Login = ({ route, navigation }) => {
   const [checkUser, setCheckUser] = useState(false)
   const [checkPass, setCheckPass] = useState(false)
 
+  const Item = ({ title, icon }) => (
+    <TouchableOpacity onPress={() => changeModalVisible(true)}>
+      <View style={styles.item}>
+        <View style={styles.itemLogo}>
+          <Icon style={styles.userLogo} size={27} color="#024b04" name={icon} />
+        </View>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 
   const onLogin = () => {
     if (userName === "") {
@@ -96,12 +98,14 @@ const Login = ({ route, navigation }) => {
     setModalVisible(!isModalVisible);
   };
 
+  const [updateModalVisible, setupdateModalVisible] = useState(false);
+
+  const changeModalVisible = (e) => {
+    setupdateModalVisible(e)
+  }
+
   return (
-
-
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-
       <View style={styles.container}>
         {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
         <Modal
@@ -132,6 +136,15 @@ const Login = ({ route, navigation }) => {
               </View>
             </View>
           </View>
+        </Modal>
+
+        <Modal
+            isVisible={updateModalVisible}
+            nRequestClose={() => changeModalVisible(false)}
+        >
+          <ModalScreen 
+            changeModalVisible={changeModalVisible}
+          />
         </Modal>
 
         <View style={styles.box1}>
@@ -191,7 +204,7 @@ const Login = ({ route, navigation }) => {
 
                 <TextInput
                   secureTextEntry={checkEye}
-                  style={styles.input}
+                  style={styles.inputmk}
                   placeholder="Mật Khẩu Đăng Nhập"
                   placeholderTextColor={'#948d8d'}
                   keyboardType="default"
@@ -230,7 +243,7 @@ const Login = ({ route, navigation }) => {
             </View>
 
             <View style={styles.fixToText}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => changeModalVisible(true)} >
                 <View
                   style={{
                     borderWidth: 1,
@@ -360,7 +373,11 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    // width: '100%',
+    margin: 2,
+    padding: 10,
+  },
+  inputmk: {
+    height: 40,
     margin: 2,
     padding: 10,
   },
