@@ -243,7 +243,7 @@ const Login = ({ route, navigation }) => {
             </View>
 
             <View style={styles.fixToText}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => changeModalVisible(true)} >
                 <View
                   style={{
                     borderWidth: 1,
