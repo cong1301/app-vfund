@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TouchableOpacity, Pressable, StyleSheet, Image } from 'react-native'
+import { View, Text, ImageBackground, TouchableOpacity, ScrollView, Pressable, StyleSheet, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Images from '../assets';
 import { useSelector, useDispatch } from "react-redux";
@@ -124,23 +124,41 @@ export default function Setting({ route, navigation }) {
 
           </View>
         </ImageBackground>
-        <View style={{ display: 'flex', alignItems: 'center' }}>
-          <TouchableOpacity
-            style={{ flexDirection: 'row', padding: 10 }}
-            onPress={onLogout} >
-            <Icon name="sign-out" size={24} color="red" />
-            <Text style={{ marginLeft: 5, fontWeight: 'bold', color: 'red', fontSize: 15 }}>Đăng xuất</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ marginHorizontal: 20 }}>
-          <View style={{ paddingVertical: 10 }}>
-            <Text style={{ color: '#858f99', fontWeight: 'bold' }}>
-              TÀI KHOẢN
-            </Text>
+        <ScrollView>
+          <View style={{ display: 'flex', alignItems: 'center' }}>
+            <TouchableOpacity
+              style={{ flexDirection: 'row', padding: 10, marginTop: 20, alignItems: 'center', justifyContent: 'center' }}
+              onPress={onLogout} >
+              <Icon name="sign-out" size={24} color="red" />
+              <Text style={{ marginLeft: 5, fontWeight: 'bold', color: 'red', fontSize: 18 }}>Đăng xuất</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('PassWordChange')}
-            style={{
+
+          <View style={{ marginHorizontal: 20 }}>
+            <View style={{ paddingVertical: 10 }}>
+              <Text style={{ color: '#858f99', fontWeight: 'bold' }}>
+                TÀI KHOẢN
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('PassWordChange')}
+              style={{
+                marginVertical: 5,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingHorizontal: 20,
+                paddingVertical: 15,
+                backgroundColor: '#fff',
+                borderRadius: 10
+              }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="laptop" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Đổi mật khẩu
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('UserNameChange')} style={{
               marginVertical: 5,
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -149,114 +167,98 @@ export default function Setting({ route, navigation }) {
               backgroundColor: '#fff',
               borderRadius: 10
             }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="laptop" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Đổi mật khẩu
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('UserNameChange')} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="edit" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Đổi tài khoản đăng nhập
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ marginHorizontal: 20 }}>
-          <View style={{ paddingVertical: 10 }}>
-            <Text style={{ color: '#858f99', fontWeight: 'bold' }}>
-              HỖ TRỢ
-            </Text>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="edit" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Đổi tài khoản đăng nhập
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={onProfile} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="user" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Thông tin cá nhân
+
+          <View style={{ marginHorizontal: 20 }}>
+            <View style={{ paddingVertical: 10 }}>
+              <Text style={{ color: '#858f99', fontWeight: 'bold' }}>
+                HỖ TRỢ
               </Text>
             </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={onProfile} style={{
+              marginVertical: 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 15,
+              backgroundColor: '#fff',
+              borderRadius: 10
+            }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="user" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Thông tin cá nhân
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={toggleModal} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="phone" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Liên hệ hotline hỗ trợ
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-
-
-          <TouchableOpacity onPress={toggleModal} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="language" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Ngôn ngữ
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={toggleModal} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="users" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Giới thiệu bạn bè
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={toggleModal} style={{
+              marginVertical: 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 15,
+              backgroundColor: '#fff',
+              borderRadius: 10
+            }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="phone" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Liên hệ hotline hỗ trợ
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
 
 
+            <TouchableOpacity onPress={toggleModal} style={{
+              marginVertical: 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 15,
+              backgroundColor: '#fff',
+              borderRadius: 10
+            }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="language" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Ngôn ngữ
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={toggleModal} style={{
+              marginVertical: 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              paddingVertical: 15,
+              backgroundColor: '#fff',
+              borderRadius: 10
+            }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon name="users" size={24} color="#000" />
+                <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
+                  Giới thiệu bạn bè
+                </Text>
+              </View>
+              <Icon name="angle-right" size={24} color="#05610a" />
+            </TouchableOpacity>
 
-        </View>
+
+
+          </View>
+        </ScrollView>
 
       </View>
     )

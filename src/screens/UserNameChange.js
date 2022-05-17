@@ -41,14 +41,14 @@ export default function UserNameChange() {
               // showsVerticalScrollIndicator={false}
               // showsHorizontalScrollIndicator={false}
               style={styles.scrollView} >
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                 <TextInput
                   style={styles.input}
                   placeholder="Tài khoản đăng nhập"
                 />
 
               </View>
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                 <TextInput
                   secureTextEntry={checkEye1}
                   style={styles.input}
@@ -68,7 +68,7 @@ export default function UserNameChange() {
                   }
                 </TouchableOpacity>
               </View>
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                 <TextInput
 
                   style={styles.input}
@@ -120,16 +120,13 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    // borderColor: null,
-    // borderWidth: 1,
-    // borderColor: '#fff',
-    // borderBottomColor: '#d4d6da',
-    // backgroundColor: '#ccc',
     marginVertical: 10
   },
   buttons: {
     alignItems: 'center',
-    marginHorizontal: 20,
+    // marginHorizontal: 20,
+    marginLeft: 20,
+    marginRight: 20,
     marginTop: 20,
     padding: 20,
     backgroundColor: '#024b04',

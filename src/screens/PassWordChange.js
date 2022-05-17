@@ -11,6 +11,7 @@ import {
     Text,
     View,
     Image,
+    SafeAreaView
 } from 'react-native'
 import Images from '../assets';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -40,7 +41,7 @@ export default function PassWordChange({ route, navigation }) {
                             // showsVerticalScrollIndicator={false}
                             // showsHorizontalScrollIndicator={false}
                             style={styles.scrollView} >
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                                 <TextInput
                                     secureTextEntry={checkEye}
                                     style={styles.input}
@@ -58,7 +59,7 @@ export default function PassWordChange({ route, navigation }) {
                                     }
                                 </TouchableOpacity>
                             </View>
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                                 <TextInput
                                     secureTextEntry={checkEye1}
                                     style={styles.input}
@@ -78,7 +79,7 @@ export default function PassWordChange({ route, navigation }) {
                                     }
                                 </TouchableOpacity>
                             </View>
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingHorizontal: 10 }}>
+                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
                                 <TextInput
                                     secureTextEntry={checkEye2}
                                     style={styles.input}
@@ -151,11 +152,13 @@ const styles = StyleSheet.create({
         // borderColor: '#fff',
         // borderBottomColor: '#d4d6da',
         // backgroundColor: '#ccc',
-        marginVertical: 10
+        marginVertical: 10,
+        // padding: 20,
     },
     buttons: {
         alignItems: 'center',
-        marginHorizontal: 20,
+        marginLeft: 20,
+        marginRight: 20,
         marginTop: 20,
         padding: 20,
         backgroundColor: '#024b04',

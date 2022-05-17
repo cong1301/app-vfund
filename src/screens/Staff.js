@@ -9,7 +9,8 @@ import {
   FlatList,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Keyboard, KeyboardAvoidingView
+  Keyboard, KeyboardAvoidingView,
+  SafeAreaView
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Images from '../assets';
@@ -120,7 +121,7 @@ const Staff = ({ route, navigation }) => {
     dispatch(clearState())
   }
   const data = useSelector(store => store.product.dataInfoUser)
-
+  console.log('data', data)
   const [mess, setMess] = useState(true);
   const getToken = async () => {
     const fcmToken = await messaging().getToken();
@@ -176,7 +177,7 @@ const Staff = ({ route, navigation }) => {
 
   return (
 
-    <>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
         <View>
           <ImageBackground source={Images.backgroundhome} resizeMode="cover" style={{ height: 200, justifyContent: 'center', alignItems: 'center' }} >
@@ -191,17 +192,11 @@ const Staff = ({ route, navigation }) => {
               style={styles.tinyLogo}
               source={require('../assets/icondangnhap/ducminh.jpg')}
             />
-            <View style={{ display: 'flex', alignItems: 'center' }}>
-              <TouchableOpacity
-                style={{ flexDirection: 'row', padding: 10 }}
-                onPress={onLogout} >
-                <Icon name="sign-out" size={24} color="red" />
-                <Text style={{ marginLeft: 5, fontWeight: 'bold', color: 'red', fontSize: 15 }}>Đăng xuất</Text>
-              </TouchableOpacity>
-            </View>
+
           </ImageBackground>
           <View style={{
-
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             borderWidth: 1,
             padding: 20,
             borderRadius: 15,
@@ -219,16 +214,27 @@ const Staff = ({ route, navigation }) => {
             shadowRadius: 5,
             shadowOpacity: 1.0
           }}>
-            <Text
-              style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16 }}
-              numberOfLines={1}>
-              NV: Kiều Duy Lưu
-            </Text>
-            <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 14 }}>
-              ID: 04285847386
-            </Text>
+            <View>
+              <Text
+                style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16 }}
+                numberOfLines={1}>
+                NV: {data.name}
+              </Text>
+              <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 14 }}>
+                ID: {data.accountNumber}
+              </Text>
+            </View>
+            <View style={{ display: 'flex', alignItems: 'center' }}>
+              <TouchableOpacity
+                style={{ flexDirection: 'row', padding: 10 }}
+                onPress={onLogout} >
+                <Icon name="sign-out" size={24} color="red" />
+                <Text style={{ marginLeft: 5, fontWeight: 'bold', color: 'red', fontSize: 15 }}>Đăng xuất</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={{ marginTop: -20 }}>
+
+          <View style={{ marginTop: -20, backgroundColor: '#fff' }}>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 20 }}>Danh sách khách hàng</Text>
             </View>
@@ -244,16 +250,15 @@ const Staff = ({ route, navigation }) => {
       </TouchableWithoutFeedback>
 
 
-      <View style={{ marginHorizontal: 15, flex: 1, marginTop: 10 }}>
+      <View style={{ marginHorizontal: 15, flex: 1, marginTop: 10, backgroundColor: '#fff' }}>
         <FlatList
-
           data={DATA}
           renderItem={renderItem}
           keyExtractor={item => item.id}
         />
       </View>
 
-    </>
+    </SafeAreaView>
   );
 }
 
