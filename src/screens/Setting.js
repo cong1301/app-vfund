@@ -249,6 +249,7 @@ export default function Setting({ route, navigation }) {
 
 const styles = StyleSheet.create({
   containerr: {
+    marginTop: '10%',
     height: 160,
   },
   header: {
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   infoUser: {
-    paddingVertical: 10,
+    paddingVertical: 7,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'

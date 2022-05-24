@@ -51,8 +51,6 @@ const DATA = [
 ];
 
 
-
-
 const Login = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const [userName, setUsername] = useState("");
@@ -62,7 +60,8 @@ const Login = ({ route, navigation }) => {
   const [checkPass, setCheckPass] = useState(false)
 
   const Item = ({ title, icon }) => (
-    <TouchableOpacity onPress={() => changeModalVisible(true)}>
+    <TouchableOpacity onPress={() => changeModalVisible(true)} >
+      
       <View style={styles.item}>
         <View style={styles.itemLogo}>
           <Icon style={styles.userLogo} size={27} color="#024b04" name={icon} />
@@ -73,6 +72,7 @@ const Login = ({ route, navigation }) => {
   );
 
   const onLogin = () => {
+    console.log("1")
     if (userName === "") {
       // Alert.alert('Bạn cần nhập tài khoản!');
       setCheckUser(true)
@@ -83,7 +83,7 @@ const Login = ({ route, navigation }) => {
       } else {
         const param = {
           username: userName,
-          password: passWord
+          password: passWord,
         }
         dispatch(signInApi(param))
       }
@@ -240,10 +240,10 @@ const Login = ({ route, navigation }) => {
                   Đăng Nhập
                 </Text>
               </TouchableOpacity>
+              
             </View>
-
             <View style={styles.fixToText}>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} >
+              <TouchableOpacity onPress={() => changeModalVisible(true)}  >
                 <View
                   style={{
                     borderWidth: 1,

@@ -25,14 +25,12 @@ function MainTap() {
                         iconName = 'history';
                     }
                     else if (route.name === 'Gift') {
-                        iconName = 'gift';
+                        iconName = 'bell';
                     }
                     else if (route.name === 'Setting') {
-                        iconName = 'sliders';
+                        iconName = 'user';
                     }
-                    else if (route.name === 'Detail') {
-                        iconName = 'bell-o';
-                    }
+                   
                     // You can return any component that you like here!
                     return <Icon name={iconName} size={size} color={color} />;
                 },
@@ -42,7 +40,15 @@ function MainTap() {
         >
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false, }} />
             <Tab.Screen name="History" component={History} options={{ headerShown: false }} />
-            <Tab.Screen name="Gift" component={Gift} options={{ headerShown: false }} />
+            <Tab.Screen name="Gift" component={Gift} options={{ 
+                title: 'Thông báo',
+                headerStyle: {
+                  backgroundColor: '#024b04',
+                },
+                headerTintColor: '#fff',
+                headerTitleAlign: 'center',
+
+            }} />
             <Tab.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
         </Tab.Navigator>
     )
