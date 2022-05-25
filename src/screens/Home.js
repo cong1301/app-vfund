@@ -198,7 +198,7 @@ const Home = ({ route, navigation }) => {
                     resizeMode={'contain'}
                   />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Tài Khoản</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Tài Khoản</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
                 <View
@@ -211,7 +211,7 @@ const Home = ({ route, navigation }) => {
                   }}>
                   <Image style={styles.midlLogo} source={Images.ic_payment} />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Thanh toán</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Thanh toán</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
                 <View
@@ -224,7 +224,7 @@ const Home = ({ route, navigation }) => {
                   }}>
                   <Image style={styles.midlLogo} source={Images.ic_tranfer} />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Chuyển khoản</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Chuyển khoản</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.content}>
@@ -239,7 +239,7 @@ const Home = ({ route, navigation }) => {
                   }}>
                   <Image style={styles.midlLogo} source={Images.ic_saveMoney} />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Tiết kiệm</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center'}}>Danh sách vay gửi</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
                 <View
@@ -252,7 +252,7 @@ const Home = ({ route, navigation }) => {
                   }}>
                   <Image style={styles.midlLogo} source={Images.ic_invest} />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Đầu tư</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Đầu tư</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
                 <View
@@ -265,7 +265,7 @@ const Home = ({ route, navigation }) => {
                   }}>
                   <Image style={styles.midlLogo} source={Images.ic_card} />
                 </View>
-                <Text style={{ marginTop: 5, fontSize: 13 }}>Thẻ</Text>
+                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Thẻ</Text>
               </TouchableOpacity>
             </View>
           </View>

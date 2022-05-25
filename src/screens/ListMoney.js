@@ -71,7 +71,7 @@ const ItemVay = ({ TG, tk, sotienvay }) => (
       Tài khoản: {tk}
     </Text>
     <Text style={styles.text}>
-      Số tiền gửi: <Text style={styles.textVay}>-{sotienvay}</Text>
+      Số tiền vay: <Text style={styles.textVay}>{sotienvay}</Text>
     </Text>
     
   </View>
