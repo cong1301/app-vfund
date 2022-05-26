@@ -11,7 +11,9 @@ import messaging from '@react-native-firebase/messaging';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '../screens/Toast';
+import ListAccount from './ListAccount'
 import ListMoney from './ListMoney'
+
 
 import Modal from "react-native-modal";
 import ModalScreen from "./ModalScreen";
@@ -54,8 +56,8 @@ const Home = ({ route, navigation }) => {
     navigation.navigate('HistoryScreens');
   }
 
-  const onListMoney = () => {
-    navigation.navigate('ListMoney');
+  const onListAccount = () => {
+    navigation.navigate('ListAccount');
   }
 
   // const [dataMess, setDataMess] = useState({})
@@ -89,15 +91,22 @@ const Home = ({ route, navigation }) => {
   return (
     <StackSetting.Navigator>
       <StackSetting.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
-      <StackSetting.Screen name="ListMoney" component={ListMoney} options={{
-        title: 'Danh Sách',
+      <StackSetting.Screen name="ListAccount" component={ListAccount} options={{
+        title: 'Sổ nguồn',
         headerStyle: {
           backgroundColor: '#024b04',
         },
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
       }} />
-      {/* <StackSetting.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} /> */}
+      <StackSetting.Screen name="ListMoney" component={ListMoney} options={{
+        title: 'Danh sách',
+        headerStyle: {
+          backgroundColor: '#024b04',
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+      }} />
 
     </StackSetting.Navigator>
   )
@@ -106,7 +115,10 @@ const Home = ({ route, navigation }) => {
 
     return (
 
-      <ScrollView style={styles.container}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        style={styles.container}>
           <Modal
               isVisible={updateModalVisible}
               nRequestClose={() => changeModalVisible(false)}
@@ -133,13 +145,14 @@ const Home = ({ route, navigation }) => {
                     color: 'white',
                     fontSize: 15,
                   }}>
-                  {`${data?.creditFundName}`}
+                  Xin chào, {`${data?.creditFundName}`}
                 </Text>
                 <Image
                   style={styles.tinyLogo}
                   source={require('../assets/icondangnhap/ducminh.jpg')}
                 />
               </View>
+              
             </ImageBackground>
             <View
               style={{
@@ -154,23 +167,24 @@ const Home = ({ route, navigation }) => {
                 padding: 20,
                 borderRadius: 15,
                 borderColor: '#024b04',
-                zIndex: 5, marginTop: -80,
+                zIndex: 5, marginTop: -50,
                 backgroundColor: '#fff',
                 elevation: 20,
                 shadowColor: '#024b04',
                 shadowOffset: {
-                  width: 6,
-                  height: 10
+                  width: 3,
+                  height: 5
                 },
                 shadowRadius: 5,
-                shadowOpacity: 1.0
+                shadowOpacity: 0.6
               }}>
                 <Text
-                  style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16 }}
+                  style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16,}}
+                  keyboardType = 'numeric'
                   numberOfLines={1}>
                   {`Tên khách hàng: ${data?.name}`}
                 </Text>
-                <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 14 }}>
+                <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 18 }}>
                   {`Tài khoản: ${data?.accountNumber}`}
                 </Text>
                 <Text style={{ color: '#024b04', fontSize: 18, paddingTop: 5, fontWeight: 'bold' }}>
@@ -179,97 +193,53 @@ const Home = ({ route, navigation }) => {
                 {/* <NumberFormat value={2456981} displayType={'text'} thousandSeparator={true} prefix={'$'} /> */}
               </View>
             </View>
+            
           </View>
 
           <View style={styles.box2}>
-            <View style={styles.content}>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#0753bd',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image
-                    style={styles.midlLogo}
-                    source={Images.ic_account}
-                    resizeMode={'contain'}
-                  />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Tài Khoản</Text>
+              <View style={{borderWidth: 1, borderRadius: 8 ,borderColor: '#fff', padding: 10, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff',}}>
+                 <Image style={{ width: 50, height: 50, borderRadius: 50}} source={require('../assets/icondangnhap/ducminh.jpg')} />
+                 <View style={{ marginLeft: 10,}}>
+                   <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>Đức Minh</Text>
+                   <Text style={{ color: '#000', fontSize: 14, }}>Trợ thủ tài chính cá nhân</Text>
+                 </View>
+              </View>
+
+              <TouchableOpacity onPress={onListAccount} style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+                  <View>
+                    <Text style={{ color: '#000', fontSize: 14, fontWeight: '500' }}>Danh sách</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+                      <Text style={{ color: '#024b04', fontSize: 19, fontWeight: 'bold' }}>{`${data?.surplus}`}</Text>
+                      <Text style={{paddingLeft: 2, fontSize: 13, color: '#737373'}}>VND</Text>
+                    </View>
+                  </View>
+                  <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#39a3c6',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image style={styles.midlLogo} source={Images.ic_payment} />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Thanh toán</Text>
+
+              <TouchableOpacity onPress={() => changeModalVisible(true)}style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+                  <View>
+                    <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
+                      Điểm thưởng
+                    </Text>
+                    
+                  </View>
+                  <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#c4122f',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image style={styles.midlLogo} source={Images.ic_tranfer} />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Chuyển khoản</Text>
+
+              <TouchableOpacity onPress={() => changeModalVisible(true)}style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+                  <View>
+                    <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
+                      Chuyển khoản
+                    </Text>
+                    
+                  </View>
+                  <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
-            </View>
-            <View style={styles.content}>
-              <TouchableOpacity onPress={onListMoney} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#f03816',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image style={styles.midlLogo} source={Images.ic_saveMoney} />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center'}}>Danh sách vay gửi</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#53b3e2',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image style={styles.midlLogo} source={Images.ic_invest} />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Đầu tư</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={{ alignItems: 'center', width: '27%' }}>
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#0066b2',
-                    borderRadius: 200 / 2,
-                    width: 60,
-                    height: 60,
-                  }}>
-                  <Image style={styles.midlLogo} source={Images.ic_card} />
-                </View>
-                <Text style={{ marginTop: 5, fontSize: 13, textAlign: 'center' }}>Thẻ</Text>
-              </TouchableOpacity>
-            </View>
+              
           </View>
         </View>
+
+        
         <View style={styles.containerr}>
           <SwiperFlatList autoplay autoplayDelay={2} autoplayLoop index={2} showPagination>
             <View style={[styles.child,]}>
@@ -298,7 +268,7 @@ const Home = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    // backgroundColor: '#cbe3c1'
   },
   containerr: { height: 150, marginTop: 20, },
   child: { width, justifyContent: 'center' },
@@ -330,8 +300,6 @@ const styles = StyleSheet.create({
   box1: {
     flex: 0.5,
     height: '25%',
-    borderBottomLeftRadius: 20,
-    borderBottomEndRadius: 20,
     justifyContent: 'space-evenly',
   },
   tinyLogo: {
@@ -345,6 +313,7 @@ const styles = StyleSheet.create({
   },
   box2: {
     flex: 1,
+    margin: 20,
   },
   content: {
     flexDirection: 'row',
@@ -377,49 +346,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 30,
   },
-//   centeredView: {
-//     flex: 1,
-//     justifyContent: 'flex-start',
-//     alignItems: "center",
-//     marginTop: 22
-//   },
-//   modalView: {
-//     width: '90%',
-//     margin: 20,
-//     backgroundColor: "white",
-//     borderRadius: 20,
-//     padding: 35,
-//     alignItems: "flex-start",
-//     shadowColor: "#000",
-//     shadowOffset: {
-//       width: 0,
-//       height: 2
-//     },
-//     shadowOpacity: 0.25,
-//     shadowRadius: 4,
-//     elevation: 5
-//   },
-//   button: {
-//     borderRadius: 20,
-//     padding: 10,
-//     elevation: 2
-//   },
-//   buttonOpen: {
-//     backgroundColor: "#F194FF",
-//   },
-//   buttonClose: {
-//     backgroundColor: "#05610a",
-//     paddingHorizontal: 20
-//   },
-//   textStyle: {
-//     color: "white",
-//     fontWeight: "bold",
-//     textAlign: "center"
-//   },
-//   modalText: {
-//     marginBottom: 10,
-//     textAlign: "center"
-//   }
+
  });
 
 export default Home
