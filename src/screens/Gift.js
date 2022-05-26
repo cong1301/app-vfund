@@ -11,66 +11,68 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import Images from '../assets';
+
 const DATA = [
     {
         id: '1',
-        image: require('../assets/anhdoithuong/tpbank.jpg'),
+        image:Images.logo,
         title: '[DDAA0010] 5.000.000 VND vào tài khoản thanh toán [DDAA0010] 5.000.000 VND vào tài khoản thanh toán [DDAA0010] 5.000.000 VND vào tài khoản thanh toán [DDAA0010] 5.000.000 VND vào tài khoản thanh toán [DDAA0010] 5.000.000 VND vào tài khoản thanh toán',
         tenquy: 'Quỹ Hà Nội',
         time: '19/05/2022 21:00',
     },
     {
         id: '2',
-        image: require('../assets/anhdoithuong/anh2trieu.jpg'),
+        image:Images.logo,
         title: '[COVID200K] Ủng hộ Quỹ Vacxin Covid 2.000.000 VND',
         tenquy: 'Quỹ Bắc Ninh',
         time: '19/05/2022 21:00',
     },
     {
         id: '3',
-        image: require('../assets/anhdoithuong/anh1trieu.jpg'),
+        image:Images.logo,
         title: '[CHATS1500TV] Voucher mua hàng tại của hàng thời trang CHÂTS',
         tenquy: 'Quỹ Bắc Giang',
         time: '19/05/2022 21:00',
     },
     {
         id: '4',
-        image: require('../assets/anhdoithuong/anh5trieu.jpg'),
+        image: Images.logo,
         title: '[DDAA0010] 5.000.000 VND vào tài khoản thanh toán',
         tenquy: 'Quỹ Hà Nội',
         time: '19/05/2022 21:00',
     },
     {
         id: '5',
-        image: require('../assets/anhdoithuong/anhtech.png'),
+        image: Images.logo,
         title: '[COVID200K] Ủng hộ Quỹ Vacxin Covid 2.000.000 VND',
         tenquy: 'Quỹ Vĩnh Phúc',
         time: '19/05/2022 21:00',
     },
     {
         id: '6',
-        image: require('../assets/anhdoithuong/anh3trieu.jpg'),
+        image: Images.logo,
         title: '[CHATS1500TV] Voucher mua hàng tại của hàng thời trang CHÂTS',
         tenquy: 'Quỹ Hà Nội',
         time: '19/05/2022 21:00',
     },
     {
         id: '7',
-        image: require('../assets/anhdoithuong/tpbank.jpg'),
+        image: Images.logo,
         title: '[DDAA0010] 5.000.000 VND vào tài khoản thanh toán',
         tenquy: 'Quỹ Hà Nội',
         time: '19/05/2022 21:00',
     },
     {
         id: '8',
-        image: require('../assets/anhdoithuong/anh2trieu.jpg'),
+        image: Images.logo,
         title: '[COVID200K] Ủng hộ Quỹ Vacxin Covid 2.000.000 VND',
         tenquy: 'Quỹ Hà Nội',
         time: '19/05/2022 21:00',
     },
     {
         id: '9',
-        image: require('../assets/anhdoithuong/anh5trieu.jpg'),
+        image: Images.logo,
         title: '[CHATS1500TV] Voucher mua hàng tại của hàng thời trang CHÂTS',
         tenquy: 'Quỹ Bắc Giang',
         time: '19/05/2022 21:00',
@@ -150,10 +152,9 @@ const styles = StyleSheet.create({
         width: '20%',
     },
     userLogo: {
-        width: 60,
-        height: 60,
+        width: 65,
+        height: 65,
         borderRadius: 20 / 2,
-
     },
     text: {
         flexDirection: 'column',
@@ -162,7 +163,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 14,
-        color: '#575454',
+        // color: '#575454',
+        color: '#000',
         paddingTop: 5,
     },
     tenquy: {
