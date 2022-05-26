@@ -74,21 +74,9 @@ const ListAccount = ({ route, navigation }) => {
 
   return (
       <SafeAreaView style={styles.container}>
-        <View style={{
-              margin: '5%',
-              borderWidth: 1,
-              padding: 20,
-              borderRadius: 15,
-              borderColor: '#024b04',
-              backgroundColor: '#fff',
-              elevation: 20,
-              shadowColor: '#024b04',
-              shadowOffset: {
-                width: 3,
-                height: 5
-              },
-              shadowRadius: 5,
-              shadowOpacity: 0.6}}>
+        
+      <Text style={styles.textsophu}>Sổ Chính</Text>
+      <View style={styles.khungsochinh}>
         <Text
           style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16,}}
           numberOfLines={1}>
@@ -102,7 +90,7 @@ const ListAccount = ({ route, navigation }) => {
         </Text>
       </View>
 
-      <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 18, marginLeft: 20, marginTop: 20,}} >Sổ Phụ (3)</Text>
+      <Text style={styles.textsophu} >Sổ Phụ (3)</Text>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -142,7 +130,31 @@ const styles = StyleSheet.create({
   sodu: {
     color: '#fff',
     fontSize: 17,
-  }
+  },
+  khungsochinh: {
+    marginLeft: 20,
+    marginRight: 20,
+    borderWidth: 1,
+    padding: 20,
+    borderRadius: 15,
+    borderColor: '#024b04',
+    backgroundColor: '#fff',
+    elevation: 20,
+    shadowColor: '#024b04',
+    shadowOffset: {
+      width: 3,
+      height: 5
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.6
+  },
+  textsophu: {
+    color: '#000', 
+    fontWeight: 'bold', 
+    fontSize: 18, 
+    marginLeft: 20, 
+    marginTop: 20,
+  },
 });
 
 export default ListAccount;

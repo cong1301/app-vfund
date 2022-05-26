@@ -197,7 +197,7 @@ const Home = ({ route, navigation }) => {
           </View>
 
           <View style={styles.box2}>
-              <View style={{borderWidth: 1, borderRadius: 8 ,borderColor: '#fff', padding: 10, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff',}}>
+              <View style={styles.support}>
                  <Image style={{ width: 50, height: 50, borderRadius: 50}} source={require('../assets/icondangnhap/ducminh.jpg')} />
                  <View style={{ marginLeft: 10,}}>
                    <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>Đức Minh</Text>
@@ -205,9 +205,9 @@ const Home = ({ route, navigation }) => {
                  </View>
               </View>
 
-              <TouchableOpacity onPress={onListAccount} style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+              <TouchableOpacity onPress={onListAccount} style={styles.listac}>
                   <View>
-                    <Text style={{ color: '#000', fontSize: 14, fontWeight: '500' }}>Danh sách</Text>
+                    <Text style={{ color: '#000', fontSize: 14, fontWeight: '500' }}>Sổ nguồn</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                       <Text style={{ color: '#024b04', fontSize: 19, fontWeight: 'bold' }}>{`${data?.surplus}`}</Text>
                       <Text style={{paddingLeft: 2, fontSize: 13, color: '#737373'}}>VND</Text>
@@ -216,7 +216,7 @@ const Home = ({ route, navigation }) => {
                   <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => changeModalVisible(true)}style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+              <TouchableOpacity onPress={() => changeModalVisible(true)}style={styles.listac}>
                   <View>
                     <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
                       Điểm thưởng
@@ -226,7 +226,7 @@ const Home = ({ route, navigation }) => {
                   <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => changeModalVisible(true)}style={{borderWidth: 1, borderRadius: 8, borderColor: '#fff',marginTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,backgroundColor: '#fff',}}>
+              <TouchableOpacity onPress={() => changeModalVisible(true)}style={styles.listac}>
                   <View>
                     <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
                       Chuyển khoản
@@ -315,37 +315,58 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 20,
   },
-  content: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: '10%',
-    marginRight: '10%',
-    marginTop: '7%',
+  support: {
+    borderWidth: 1, 
+    borderRadius: 8,
+    borderColor: '#fff', 
+    padding: 10, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    backgroundColor: '#fff',
   },
-  midlLogo: {
-    width: 40,
-    margin: 10,
-    height: 40,
+  listac: {
+    borderWidth: 1, 
+    borderRadius: 8, 
+    borderColor: '#fff',
+    marginTop: 20, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    padding: 10,
+    backgroundColor: '#fff',
   },
-  footer: {
-    justifyContent: 'flex-end',
-    borderTopWidth: 1,
-    borderTopColor: '#c9c7c1',
-    backgroundColor: '#FBFBF9',
-  },
-  end: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-    paddingHorizontal: 5,
-  },
-  footerLogo: {
-    width: 30,
-    margin: 10,
-    height: 30,
-  },
+
+  // content: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   marginLeft: '10%',
+  //   marginRight: '10%',
+  //   marginTop: '7%',
+  // },
+  // midlLogo: {
+  //   width: 40,
+  //   margin: 10,
+  //   height: 40,
+  // },
+  // footer: {
+  //   justifyContent: 'flex-end',
+  //   borderTopWidth: 1,
+  //   borderTopColor: '#c9c7c1',
+  //   backgroundColor: '#FBFBF9',
+  // },
+  // end: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   marginTop: 10,
+  //   marginBottom: 10,
+  //   paddingHorizontal: 5,
+  // },
+  // footerLogo: {
+  //   width: 30,
+  //   margin: 10,
+  //   height: 30,
+  // },
 
  });
 
