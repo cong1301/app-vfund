@@ -145,7 +145,7 @@ const Home = ({ route, navigation }) => {
                     color: 'white',
                     fontSize: 15,
                   }}>
-                  Xin chào, {`${data?.creditFundName}`}
+                  {`${data?.creditFundName}`}
                 </Text>
                 <Image
                   style={styles.tinyLogo}
