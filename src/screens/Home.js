@@ -200,8 +200,8 @@ const Home = ({ route, navigation }) => {
               <View style={styles.support}>
                  <Image style={{ width: 50, height: 50, borderRadius: 50}} source={require('../assets/icondangnhap/ducminh.jpg')} />
                  <View style={{ marginLeft: 10,}}>
-                   <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>Đức Minh</Text>
-                   <Text style={{ color: '#000', fontSize: 14, }}>Trợ thủ tài chính cá nhân</Text>
+                   <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>Bee</Text>
+                   <Text style={{ color: '#000', fontSize: 14, }}>Tài chính cá nhân</Text>
                  </View>
               </View>
 

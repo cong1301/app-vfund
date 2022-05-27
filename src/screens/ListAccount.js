@@ -2,8 +2,6 @@ import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from "react-redux";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ListMoney from './ListMoney'
 
 
 const DATA = [
@@ -46,7 +44,6 @@ const DATA = [
 ];
 
 
-// const StackListAccount = createNativeStackNavigator();
 const ListAccount = ({ route, navigation }) => {
 
   const data = useSelector(store => store.product.dataInfoUser)
@@ -74,20 +71,22 @@ const ListAccount = ({ route, navigation }) => {
 
   return (
       <SafeAreaView style={styles.container}>
-        
-      <Text style={styles.textsophu}>Sổ Chính</Text>
-      <View style={styles.khungsochinh}>
-        <Text
-          style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16,}}
-          numberOfLines={1}>
-          {`Tên khách hàng: ${data?.name}`}
-        </Text>
-        <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 18 }}>
-          {`Tài khoản: ${data?.accountNumber}`}
-        </Text>
-        <Text style={{ color: '#024b04', fontSize: 18, paddingTop: 5, fontWeight: 'bold' }}>
-          {`Số dư: ${data?.surplus} VND`}
-        </Text>
+      
+      <View style={{marginTop: '3%'}}>
+        <Text style={styles.textsophu}>Sổ Chính</Text>
+        <TouchableOpacity onPress={onListMoney} style={styles.khungsochinh}>
+          <Text
+            style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16,}}
+            numberOfLines={1}>
+            {`Tên khách hàng: ${data?.name}`}
+          </Text>
+          <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 18 }}>
+            {`Tài khoản: ${data?.accountNumber}`}
+          </Text>
+          <Text style={{ color: '#024b04', fontSize: 18, paddingTop: 5, fontWeight: 'bold' }}>
+            {`Số dư: ${data?.surplus} VND`}
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <Text style={styles.textsophu} >Sổ Phụ (3)</Text>
@@ -132,6 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   khungsochinh: {
+    marginTop: 8,
     marginLeft: 20,
     marginRight: 20,
     borderWidth: 1,
@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 18, 
     marginLeft: 20, 
     marginTop: 20,
+    marginBottom: 5,
   },
 });
 

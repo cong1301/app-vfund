@@ -11,11 +11,12 @@ import {
   Text,
   View,
   Image,
-  Modal
 } from 'react-native'
 import Images from '../assets';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Animatable from 'react-native-animatable';
+import Modal from "react-native-modal";
+import ModalScreen from "./ModalScreen"
 
 
 
@@ -27,12 +28,25 @@ export default function UserNameChange() {
 
 
   const handleSave = () => {
-
+    changeModalVisible(true)
   }
+
+  const [updateModalVisible, setupdateModalVisible] = useState(false);
+  const changeModalVisible = (e) => {
+      setupdateModalVisible(e)
+  }
+
   return (
 
     <View style={styles.container}>
-
+        <Modal
+            isVisible={updateModalVisible}
+            nRequestClose={() => changeModalVisible(false)}
+        >
+        <ModalScreen 
+            changeModalVisible={changeModalVisible}
+        />
+        </Modal>
       <ScrollView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.info}>
