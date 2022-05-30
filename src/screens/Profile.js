@@ -1,13 +1,25 @@
 import { StyleSheet, Image, TextInput, ScrollView,TouchableWithoutFeedback,Keyboard, TouchableOpacity, Text, View } from 'react-native'
 import Images from '../assets';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-native-modal";
+import ModalScreen from "./ModalScreen"
 
 
 export default function Profile({ route, navigation }) {
 
     const data = useSelector(store => store.product.dataInfoUser)
+    const [updateModalVisible, setupdateModalVisible] = useState(false);
+
+    const handleSave = () => {
+        changeModalVisible(true)
+      }
+
+    
+    const changeModalVisible = (e) => {
+        setupdateModalVisible(e)
+    }
 
   return (
 
@@ -16,6 +28,14 @@ export default function Profile({ route, navigation }) {
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             style={styles.container}>
+        <Modal
+            isVisible={updateModalVisible}
+            nRequestClose={() => changeModalVisible(false)}
+        >
+        <ModalScreen 
+            changeModalVisible={changeModalVisible}
+        />
+        </Modal>
         
             <View style={styles.avatars} >
                 <Image
@@ -84,7 +104,7 @@ export default function Profile({ route, navigation }) {
 
                 </View>
             </View>
-            <TouchableOpacity style={styles.buttons}>
+            <TouchableOpacity onPress={handleSave} style={styles.buttons}>
                 <Text style={{fontSize: 18, color: '#fff', }} >Lưu lại</Text>
             </TouchableOpacity>
         
