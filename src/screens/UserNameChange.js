@@ -55,14 +55,14 @@ export default function UserNameChange() {
               // showsVerticalScrollIndicator={false}
               // showsHorizontalScrollIndicator={false}
               style={styles.scrollView} >
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+              <View style={styles.inputchange}>
                 <TextInput
                   style={styles.input}
                   placeholder="Tài khoản đăng nhập"
                 />
 
               </View>
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+              <View style={styles.inputchange}>
                 <TextInput
                   secureTextEntry={checkEye1}
                   style={styles.input}
@@ -82,7 +82,7 @@ export default function UserNameChange() {
                   }
                 </TouchableOpacity>
               </View>
-              <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+              <View style={styles.inputchange}>
                 <TextInput
 
                   style={styles.input}
@@ -126,22 +126,34 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: '#fff',
-    paddingVertical: 20
+    paddingTop: 20
   },
   scrollView: {
-    marginHorizontal: 20,
     width: '100%'
+  },
+  inputchange: {
+    flexDirection: 'row', 
+    marginTop: 20, 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    // backgroundColor: '#ccc', 
+    borderWidth: 1,
+    borderColor: '#024b04',
+    borderRadius: 20, 
+    paddingLeft: 10, 
+    paddingRight: 10
   },
   input: {
     flex: 1,
-    marginVertical: 10
+    padding: 15,
+    // marginVertical: 10,
   },
   buttons: {
     alignItems: 'center',
     // marginHorizontal: 20,
     marginLeft: 20,
     marginRight: 20,
-    marginTop: 20,
+    marginTop: 30,
     padding: 20,
     backgroundColor: '#024b04',
     borderRadius: 50,

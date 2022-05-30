@@ -20,7 +20,7 @@ import ModalScreen from "./ModalScreen";
 // import NumberFormat from 'react-number-format';
 const width = Dimensions.get('window').width;
 
-const StackSetting = createNativeStackNavigator();
+const StackHome = createNativeStackNavigator();
 const Home = ({ route, navigation }) => {
   const data = useSelector(store => store.product.dataInfoUser)
   const dispatch = useDispatch()
@@ -89,9 +89,9 @@ const Home = ({ route, navigation }) => {
   }
 
   return (
-    <StackSetting.Navigator>
-      <StackSetting.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
-      <StackSetting.Screen name="ListAccount" component={ListAccount} options={{
+    <StackHome.Navigator>
+      <StackHome.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
+      <StackHome.Screen name="ListAccount" component={ListAccount} options={{
         title: 'Sổ nguồn',
         headerStyle: {
           backgroundColor: '#024b04',
@@ -99,7 +99,7 @@ const Home = ({ route, navigation }) => {
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
       }} />
-      <StackSetting.Screen name="ListMoney" component={ListMoney} options={{
+      <StackHome.Screen name="ListMoney" component={ListMoney} options={{
         title: 'Danh sách',
         headerStyle: {
           backgroundColor: '#024b04',
@@ -108,7 +108,7 @@ const Home = ({ route, navigation }) => {
         headerTitleAlign: 'center',
       }} />
 
-    </StackSetting.Navigator>
+    </StackHome.Navigator>
   )
 
   function HomeMain() {
@@ -129,21 +129,18 @@ const Home = ({ route, navigation }) => {
           </Modal>
         <View style={styles.box}>
           <View style={styles.box1}>
-            <ImageBackground source={Images.backgroundhome} resizeMode="cover">
               <View style={{
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: 250,
-                marginTop: -30,
-                // backgroundColor: '#024b04',
-                borderBottomLeftRadius: 5,
-                borderBottomRightRadius: 5,
+                marginTop: -20,
+                backgroundColor: '#024b04',
               }}>
                 <Text
                   style={{
                     fontWeight: 'bold',
                     color: 'white',
-                    fontSize: 15,
+                    fontSize: 16,
                   }}>
                   {`${data?.creditFundName}`}
                 </Text>
@@ -152,8 +149,7 @@ const Home = ({ route, navigation }) => {
                   source={require('../assets/icondangnhap/ducminh.jpg')}
                 />
               </View>
-              
-            </ImageBackground>
+           
             <View
               style={{
                 flexDirection: 'row',
@@ -167,7 +163,7 @@ const Home = ({ route, navigation }) => {
                 padding: 20,
                 borderRadius: 15,
                 borderColor: '#024b04',
-                zIndex: 5, marginTop: -50,
+                zIndex: 5, marginTop: -60,
                 backgroundColor: '#fff',
                 elevation: 20,
                 shadowColor: '#024b04',
@@ -178,18 +174,32 @@ const Home = ({ route, navigation }) => {
                 shadowRadius: 5,
                 shadowOpacity: 0.6
               }}>
-                <Text
-                  style={{ color: '#024b04', fontWeight: 'bold', fontSize: 16,}}
-                  keyboardType = 'numeric'
-                  numberOfLines={1}>
-                  {`Tên khách hàng: ${data?.name}`}
-                </Text>
-                <Text style={{ color: '#024b04', fontWeight: 'bold', fontSize: 18 }}>
-                  {`Tài khoản: ${data?.accountNumber}`}
-                </Text>
-                <Text style={{ color: '#024b04', fontSize: 18, paddingTop: 5, fontWeight: 'bold' }}>
-                  {`Số dư: ${data?.surplus} VND`}
-                </Text>
+                <View style={{ alignItems: 'center',  }}>
+                  <Text style={styles.text16}>
+                    Tên khách hàng:
+                  </Text>
+                  <Text
+                    style={styles.text18}
+                    keyboardType = 'numeric'
+                    numberOfLines={1}>
+                    {`${data?.name}`}
+                  </Text>
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: '3%',}}>
+                    <View style={{ flexDirection: 'column', alignItems: 'center'}}>
+                      <Text style={styles.text16}>Tài khoản:</Text>
+                      <Text style={styles.text18}>
+                        {`${data?.accountNumber}`}
+                      </Text>
+                    </View>
+                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                      <Text style={styles.text16}>Số dư:</Text>
+                      <Text style={styles.text18}>
+                        {`${data?.surplus} VND`}
+                      </Text>
+                    </View>
+                </View>
+                
                 {/* <NumberFormat value={2456981} displayType={'text'} thousandSeparator={true} prefix={'$'} /> */}
               </View>
             </View>
@@ -200,7 +210,7 @@ const Home = ({ route, navigation }) => {
               <View style={styles.support}>
                  <Image style={{ width: 50, height: 50, borderRadius: 50}} source={require('../assets/icondangnhap/ducminh.jpg')} />
                  <View style={{ marginLeft: 10,}}>
-                   <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>Bee</Text>
+                   <Text style={styles.text18}>Nguyễn Thị Sơn</Text>
                    <Text style={{ color: '#000', fontSize: 14, }}>Tài chính cá nhân</Text>
                  </View>
               </View>
@@ -299,8 +309,17 @@ const styles = StyleSheet.create({
   },
   box1: {
     flex: 0.5,
-    height: '25%',
     justifyContent: 'space-evenly',
+  },
+  text18: {
+    color: '#024b04', 
+    fontWeight: 'bold', 
+    fontSize: 18,
+  },
+  text16: {
+    color: '#024b04', 
+    fontWeight: 'bold', 
+    fontSize: 16,
   },
   tinyLogo: {
     width: 70,

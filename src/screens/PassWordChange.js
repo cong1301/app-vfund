@@ -60,7 +60,7 @@ export default function PassWordChange({ route, navigation }) {
                             // showsVerticalScrollIndicator={false}
                             // showsHorizontalScrollIndicator={false}
                             style={styles.scrollView} >
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+                            <View style={styles.inputmk}>
                                 <TextInput
                                     secureTextEntry={checkEye}
                                     style={styles.input}
@@ -78,7 +78,7 @@ export default function PassWordChange({ route, navigation }) {
                                     }
                                 </TouchableOpacity>
                             </View>
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+                            <View style={styles.inputmk}>
                                 <TextInput
                                     secureTextEntry={checkEye1}
                                     style={styles.input}
@@ -98,7 +98,7 @@ export default function PassWordChange({ route, navigation }) {
                                     }
                                 </TouchableOpacity>
                             </View>
-                            <View style={{ flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ccc', borderRadius: 20, paddingLeft: 10, paddingRight: 10 }}>
+                            <View style={styles.inputmk}>
                                 <TextInput
                                     secureTextEntry={checkEye2}
                                     style={styles.input}
@@ -153,33 +153,35 @@ const styles = StyleSheet.create({
     },
     info: {
         alignItems: 'center',
-        // borderWidth: 1,
-        // borderRadius: 10,
         marginLeft: 20,
         marginRight: 20,
         backgroundColor: '#fff',
-        paddingVertical: 20
+        paddingTop: 20,
     },
     scrollView: {
-        marginHorizontal: 20,
         width: '100%'
+    },
+    inputmk: {
+        flexDirection: 'row', 
+        marginTop: 20, 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        borderWidth: 1,
+        borderColor: '#024b04',
+        borderRadius: 20, 
+        paddingLeft: 10, 
+        paddingRight: 10,
     },
     input: {
         flex: 1,
-        // borderColor: null,
-        // borderWidth: 1,
-        // borderColor: '#fff',
-        // borderBottomColor: '#d4d6da',
-        // backgroundColor: '#ccc',
-        marginVertical: 10,
-        // padding: 20,
+        padding: 15,
     },
     buttons: {
         alignItems: 'center',
         marginLeft: 20,
         marginRight: 20,
-        marginTop: 20,
-        padding: 20,
+        marginTop: 30,
+        padding: 15,
         backgroundColor: '#024b04',
         borderRadius: 50,
     },

@@ -80,7 +80,7 @@ export default function Setting({ route, navigation }) {
           />
         </Modal>
         
-        <ImageBackground source={Images.backgroundhome} resizeMode="cover">
+        <View style={{backgroundColor: '#024b04'}}>
           <View style={styles.containerr}>
             <View style={styles.header}>
               <Text style={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}>VFUND</Text>
@@ -105,7 +105,8 @@ export default function Setting({ route, navigation }) {
             </View>
 
           </View>
-        </ImageBackground>
+        </View>
+
         <View style={{ display: 'flex', alignItems: 'center' }}>
           <TouchableOpacity
             style={{ flexDirection: 'row', padding: 10 }}

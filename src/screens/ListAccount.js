@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from "react-redux";
+
 
 
 const DATA = [
@@ -23,24 +24,6 @@ const DATA = [
     taikhoan: 'AB6584357',
     sodu: '13,000,000'
   },
-  // {
-  //   id: '4',
-  //   tenkh: 'NGUYỄN VĂN CƯỜNG',
-  //   taikhoan: 'AB6584357',
-  //   sodu: '13,000,000'
-  // },
-  // {
-  //   id: '5',
-  //   tenkh: 'NGUYỄN VĂN CƯỜNG',
-  //   taikhoan: 'AB6584357',
-  //   sodu: '13,000,000'
-  // },
-  // {
-  //   id: '6',
-  //   tenkh: 'NGUYỄN VĂN CƯỜNG',
-  //   taikhoan: 'AB6584357',
-  //   sodu: '13,000,000'
-  // },
 ];
 
 
@@ -49,16 +32,18 @@ const ListAccount = ({ route, navigation }) => {
   const data = useSelector(store => store.product.dataInfoUser)
 
   const Item = ({ tenkh, taikhoan, sodu }) => (
-    <TouchableOpacity onPress={onListMoney}>
-      <View style={styles.item}>
-        <View >
-          <Text style={styles.tenkh}>Tên khách hàng: {tenkh}</Text>
-          <Text style={styles.taikhoan}>Tài khoản: {taikhoan}</Text>
-          <Text style={styles.sodu}>Số dư: {sodu} VND</Text>
-        </View>
-        <Icon name={'chevron-right'} color="#fff" size={16} />
+    
+      <View>
+        <TouchableOpacity onPress={onListMoney} style={styles.item}>
+          <View >
+            <Text style={styles.tenkh}>Tên khách hàng: {tenkh}</Text>
+            <Text style={styles.taikhoan}>Tài khoản: {taikhoan}</Text>
+            <Text style={styles.sodu}>Số dư: {sodu} VND</Text>
+          </View>
+          <Icon name={'chevron-right'} color="#fff" size={16} />
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    
   );
 
   const renderItem = ({ item }) => (
@@ -116,7 +101,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#024b04',
     borderRadius: 7,
-    // marginTop: '5%',
   },
   tenkh: {
     fontSize: 17,
