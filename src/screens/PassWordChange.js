@@ -64,7 +64,8 @@ export default function PassWordChange({ route, navigation }) {
                                 <TextInput
                                     secureTextEntry={checkEye}
                                     style={styles.input}
-                                    placeholder="Mật khẩu hiện tại"
+                                    placeholder="Nhập mật khẩu hiện tại"
+                                    placeholderTextColor={'#948d8d'}
                                 />
                                 <TouchableOpacity
                                     onPress={() => setCheckEye(!checkEye)}
@@ -82,7 +83,8 @@ export default function PassWordChange({ route, navigation }) {
                                 <TextInput
                                     secureTextEntry={checkEye1}
                                     style={styles.input}
-                                    placeholder="Mật khẩu mới"
+                                    placeholder="Nhập mật khẩu mới"
+                                    placeholderTextColor={'#948d8d'}
                                     onChangeText={(e) => setPassWordNew(e)}
                                     value={passWordNew}
                                 />
@@ -103,6 +105,7 @@ export default function PassWordChange({ route, navigation }) {
                                     secureTextEntry={checkEye2}
                                     style={styles.input}
                                     placeholder="Nhập lại mật khẩu mới"
+                                    placeholderTextColor={'#948d8d'}
                                     onChangeText={(e) => setRePassWordNew(e)}
                                     value={rePassWordNew}
                                 />

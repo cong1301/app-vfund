@@ -50,7 +50,7 @@ export default function Profile({ route, navigation }) {
                     source={require('../assets/icondangnhap/ducminh.jpg')}
                 />
                         {/* <Icon color='#cdface' name="user" size={60} /> */}
-                <TouchableOpacity >
+                <TouchableOpacity onPress={handleSave} >
                     <Text style={{fontSize: 16, color: '#024b04', padding: 10, textDecorationLine: 'underline'}}>Đổi ảnh đại diện</Text>
                 </TouchableOpacity>
             </View>
@@ -92,16 +92,6 @@ export default function Profile({ route, navigation }) {
                         </TextInput>
                     </View>
 
-                    <View style={styles.input}>
-                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Email</Text>
-                        <TextInput
-                            placeholder="Nhập địa Email"
-                            placeholderTextColor={'#948d8d'}
-                        >
-                            
-                        </TextInput>
-                    </View>
-
                 </View>
             </View>
             <TouchableOpacity onPress={handleSave} style={styles.buttons}>
@@ -135,6 +125,10 @@ const styles = StyleSheet.create({
         // marginHorizontal: 20,
         marginLeft: 20,
         marginRight: 20,
+        // marginBottom: 20,
+        marginTop: 15,
+        marginBottom: 15,
+
     },
     input: {
         marginTop: 15,

@@ -174,10 +174,7 @@ const Home = ({ route, navigation }) => {
                 shadowRadius: 5,
                 shadowOpacity: 0.6
               }}>
-                <View style={{ alignItems: 'center',  }}>
-                  <Text style={styles.text16}>
-                    Tên khách hàng:
-                  </Text>
+                <View>
                   <Text
                     style={styles.text18}
                     keyboardType = 'numeric'
@@ -185,22 +182,20 @@ const Home = ({ route, navigation }) => {
                     {`${data?.name}`}
                   </Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: '3%',}}>
-                    <View style={{ flexDirection: 'column', alignItems: 'center'}}>
-                      <Text style={styles.text16}>Tài khoản:</Text>
+                {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: '3%',}}> */}
+                    <View >
+                      {/* <Text style={styles.text16}></Text> */}
                       <Text style={styles.text18}>
-                        {`${data?.accountNumber}`}
+                        {`Tài khoản: ${data?.accountNumber}`}
                       </Text>
                     </View>
-                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                      <Text style={styles.text16}>Số dư:</Text>
+                    <View >
+                      {/* <Text style={styles.text16}></Text> */}
                       <Text style={styles.text18}>
-                        {`${data?.surplus} VND`}
+                        {`Số dư: ${data?.surplus} VND`}
                       </Text>
                     </View>
-                </View>
-                
-                {/* <NumberFormat value={2456981} displayType={'text'} thousandSeparator={true} prefix={'$'} /> */}
+                {/* </View> */}
               </View>
             </View>
             
@@ -252,19 +247,19 @@ const Home = ({ route, navigation }) => {
         
         <View style={styles.containerr}>
           <SwiperFlatList autoplay autoplayDelay={2} autoplayLoop index={2} showPagination>
-            <View style={[styles.child,]}>
-              <Image style={{ width: '100%', height: null, aspectRatio: 1192 / 434 }} source={require('../assets/anhbanner/13-11-20-BannerEventWeb.jpg')} />
+            <View style={[styles.child]}>
+              <Image style={styles.slidechild} source={require('../assets/anhbanner/13-11-20-BannerEventWeb.jpg')} />
             </View>
             <View style={[styles.child,]}>
-              <Image style={{ width: '100%', height: null, aspectRatio: 1192 / 434 }} source={require('../assets/anhbanner/qua-tang-tet-600x337.png')} />
+              <Image style={styles.slidechild} source={require('../assets/anhbanner/qua-tang-tet-600x337.png')} />
 
             </View>
             <View style={[styles.child,]}>
-              <Image style={{ width: '100%', height: null, aspectRatio: 1192 / 434 }} source={require('../assets/anhbanner/qua-tang-suc-khoe-dip-tet-nguyen-dan-tan-suu-2021.jpg')} />
+              <Image style={styles.slidechild} source={require('../assets/anhbanner/qua-tang-suc-khoe-dip-tet-nguyen-dan-tan-suu-2021.jpg')} />
 
             </View>
             <View style={[styles.child,]}>
-              <Image style={{ width: '100%', height: null, aspectRatio: 1192 / 434 }} source={require('../assets/anhbanner/qua-tang-tet-600x337.png')} />
+              <Image style={styles.slidechild} source={require('../assets/anhbanner/qua-tang-tet-600x337.png')} />
 
             </View>
           </SwiperFlatList>
@@ -282,6 +277,7 @@ const styles = StyleSheet.create({
   },
   containerr: { height: 150, marginTop: 20, },
   child: { width, justifyContent: 'center' },
+  slidechild: { width: '100%', height: null, aspectRatio: 1192 / 434 },
   text: { fontSize: width * 0.5, textAlign: 'center' },
   bottomItem: {
     width: width / 4.5,
@@ -319,7 +315,7 @@ const styles = StyleSheet.create({
   text16: {
     color: '#024b04', 
     fontWeight: 'bold', 
-    fontSize: 16,
+    fontSize: 14,
   },
   tinyLogo: {
     width: 70,
@@ -354,39 +350,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
   },
-
-  // content: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   marginLeft: '10%',
-  //   marginRight: '10%',
-  //   marginTop: '7%',
-  // },
-  // midlLogo: {
-  //   width: 40,
-  //   margin: 10,
-  //   height: 40,
-  // },
-  // footer: {
-  //   justifyContent: 'flex-end',
-  //   borderTopWidth: 1,
-  //   borderTopColor: '#c9c7c1',
-  //   backgroundColor: '#FBFBF9',
-  // },
-  // end: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  //   marginTop: 10,
-  //   marginBottom: 10,
-  //   paddingHorizontal: 5,
-  // },
-  // footerLogo: {
-  //   width: 30,
-  //   margin: 10,
-  //   height: 30,
-  // },
-
  });
 
 export default Home
