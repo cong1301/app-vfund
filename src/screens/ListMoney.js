@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Animated, StyleSheet, useWindowDimensions, FlatList, Text , Image } from 'react-native';
+import { View, Animated, StyleSheet, useWindowDimensions, FlatList, SafeAreaView, Text , Image } from 'react-native';
 import { TabView, SceneMap, TabBar, TextView } from 'react-native-tab-view';
 import Images from '../assets';
 
@@ -87,7 +87,7 @@ const FirstRoute = () =>{
 
 
   return(
-  <View style={[styles.sence, { backgroundColor: '#fff' }]} >
+  <SafeAreaView style={[styles.container, { backgroundColor: '#fff' }]} >
       <Animated.FlatList
         data={TIENGUI}
         onScroll={Animated.event(
@@ -98,7 +98,7 @@ const FirstRoute = () =>{
         renderItem={renderItemGui}
         keyExtractor={item => item.id}
       />
-  </View>
+  </SafeAreaView>
 );
 }
 
@@ -169,7 +169,7 @@ const SecondRoute = () => {
 
   const scrollY = React.useRef(new Animated.Value(0)).current;
   return (
-    <View style={[styles.sence, { backgroundColor: '#fff' }]} >
+    <SafeAreaView style={[styles.container, { backgroundColor: '#fff' }]} >
       <Animated.FlatList
           data={TIENVAY}
           onScroll={Animated.event(
@@ -180,7 +180,7 @@ const SecondRoute = () => {
           renderItem={renderItemVay}
           keyExtractor={item => item.id}
         />
-    </View>
+    </SafeAreaView>
   );
   
 }
@@ -201,7 +201,7 @@ export default function ListMoney({ route, navigation }) {
   ]);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TabView
         // renderTabBar={renderTabBar}
         navigationState={{ index, routes }}
@@ -211,13 +211,12 @@ export default function ListMoney({ route, navigation }) {
         showPageIndicator={true}
         renderTabBar={props => <TabBar {...props} style={styles.tabBar} indicatorStyle={styles.indicatorStyle}/>}
       />
-  </View>
+  </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  sence: { flex: 1 },
   tabBar: {
     backgroundColor: '#024b04',
     borderBottomWidth: 1,
@@ -244,13 +243,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#47a405',
-    paddingBottom: 10,
   },
   textVay: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#ed250e',
-    paddingBottom: 10,
   },
   TG: {
     color: '#000',
