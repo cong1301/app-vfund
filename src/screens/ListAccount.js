@@ -8,19 +8,19 @@ import { useSelector, useDispatch } from "react-redux";
 const DATA = [
   {
     id: '1',
-    tenkh: 'NGUYỄN ĐỨC MINH',
+    tenkh: 'NGUYỄN THỊ SƠN',
     taikhoan: 'AB1903507',
     sodu: '25,680,000'
   },
   {
     id: '2',
-    tenkh: 'NGUYỄN PHƯƠNG LINH',
+    tenkh: 'NGUYỄN THỊ SƠN',
     taikhoan: 'AB2875872',
     sodu: '30,000,000'
   },
   {
     id: '3',
-    tenkh: 'NGUYỄN VĂN CƯỜNG',
+    tenkh: 'NGUYỄN THỊ SƠN',
     taikhoan: 'AB6584357',
     sodu: '13,000,000'
   },

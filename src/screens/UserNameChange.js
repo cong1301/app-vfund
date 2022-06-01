@@ -58,7 +58,8 @@ export default function UserNameChange() {
               <View style={styles.inputchange}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Tài khoản đăng nhập"
+                  placeholder="Nhập tài khoản đăng nhập"
+                  placeholderTextColor={'#948d8d'}
                 />
 
               </View>
@@ -66,7 +67,8 @@ export default function UserNameChange() {
                 <TextInput
                   secureTextEntry={checkEye1}
                   style={styles.input}
-                  placeholder="Mật khẩu"
+                  placeholder="Nhập mật khẩu"
+                  placeholderTextColor={'#948d8d'}
                   onChangeText={(e) => setPassWordNew(e)}
                   value={passWordNew}
                 />
@@ -86,9 +88,10 @@ export default function UserNameChange() {
                 <TextInput
 
                   style={styles.input}
-                  placeholder="Tài khoản đăng nhập mới"
-                  onChangeText={(e) => setRePassWordNew(e)}
-                  value={rePassWordNew}
+                    placeholderTextColor={'#948d8d'}
+                    placeholder="Nhập tài khoản đăng nhập mới"
+                    onChangeText={(e) => setRePassWordNew(e)}
+                    value={rePassWordNew}
                 />
 
               </View>
