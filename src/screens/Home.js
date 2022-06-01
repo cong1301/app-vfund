@@ -88,6 +88,12 @@ const Home = ({ route, navigation }) => {
     setupdateModalVisible(e)
   }
 
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <StackHome.Navigator>
       <StackHome.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
@@ -119,6 +125,35 @@ const Home = ({ route, navigation }) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         style={styles.container}>
+          <Modal
+            isVisible={isModalVisible}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: '100%', }}>
+                  <Image style={{ width: 50, height: 50, marginRight: 15, borderRadius: 10 }} source={Images.logo} />
+                  <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16, }}>Thông Báo!</Text>
+                </View>
+
+                <View style={{ alignItems: 'center',}}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', padding: 20}}>
+                    <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 17, }}>Điểm thưởng: </Text>
+                    <Text style={{ color: '#024b04', fontWeight: 'bold' , fontSize: 20,}} >410 Điểm</Text>
+                  </View>
+                </View>
+
+                <View style={{ width: '100%', alignItems: 'flex-end', }}>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={toggleModal}
+                  >
+                    <Text style={styles.textStyle}>OK</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </View>
+          </Modal>
+
           <Modal
               isVisible={updateModalVisible}
               nRequestClose={() => changeModalVisible(false)}
@@ -221,7 +256,7 @@ const Home = ({ route, navigation }) => {
                   <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => changeModalVisible(true)}style={styles.listac}>
+              <TouchableOpacity onPress={toggleModal} style={styles.listac}>
                   <View>
                     <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
                       Điểm thưởng
@@ -231,7 +266,7 @@ const Home = ({ route, navigation }) => {
                   <Icon name="chevron-right" size={25} color="#024b04" />
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => changeModalVisible(true)}style={styles.listac}>
+              <TouchableOpacity onPress={() => changeModalVisible(true)} style={styles.listac}>
                   <View>
                     <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
                       Chuyển khoản
@@ -349,6 +384,49 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     padding: 10,
     backgroundColor: '#fff',
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    width: '92%',
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#05610a",
+    paddingHorizontal: 20
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 10,
+    textAlign: "center"
   },
  });
 
