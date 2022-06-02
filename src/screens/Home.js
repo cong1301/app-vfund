@@ -11,7 +11,6 @@ import messaging from '@react-native-firebase/messaging';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '../screens/Toast';
-import ListAccount from './ListAccount'
 import ListMoney from './ListMoney'
 
 
@@ -56,8 +55,8 @@ const Home = ({ route, navigation }) => {
     navigation.navigate('HistoryScreens');
   }
 
-  const onListAccount = () => {
-    navigation.navigate('ListAccount');
+  const onListMoney = () => {
+    navigation.navigate('ListMoney');
   }
 
   // const [dataMess, setDataMess] = useState({})
@@ -97,22 +96,7 @@ const Home = ({ route, navigation }) => {
   return (
     <StackHome.Navigator>
       <StackHome.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
-      <StackHome.Screen name="ListAccount" component={ListAccount} options={{
-        title: 'Sổ nguồn',
-        headerStyle: {
-          backgroundColor: '#024b04',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-      }} />
-      <StackHome.Screen name="ListMoney" component={ListMoney} options={{
-        title: 'Danh sách',
-        headerStyle: {
-          backgroundColor: '#024b04',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-      }} />
+      <StackHome.Screen name="ListMoney" component={ListMoney} options={{headerShown: false}} />
 
     </StackHome.Navigator>
   )
@@ -125,34 +109,6 @@ const Home = ({ route, navigation }) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         style={styles.container}>
-          <Modal
-            isVisible={isModalVisible}
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: '100%', }}>
-                  <Image style={{ width: 50, height: 50, marginRight: 15, borderRadius: 10 }} source={Images.logo} />
-                  <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16, }}>Thông Báo!</Text>
-                </View>
-
-                <View style={{ alignItems: 'center',}}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', padding: 20}}>
-                    <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 17, }}>Điểm thưởng: </Text>
-                    <Text style={{ color: '#024b04', fontWeight: 'bold' , fontSize: 20,}} >410 Điểm</Text>
-                  </View>
-                </View>
-
-                <View style={{ width: '100%', alignItems: 'flex-end', }}>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={toggleModal}
-                  >
-                    <Text style={styles.textStyle}>OK</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </View>
-          </Modal>
 
           <Modal
               isVisible={updateModalVisible}
@@ -185,55 +141,27 @@ const Home = ({ route, navigation }) => {
                 />
               </View>
            
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                margin: 15,
+              <TouchableOpacity onPress={onListMoney} style={styles.infoView}>
+                  <View style={{marginRight: 5,}}>
+                    <Text
+                      style={styles.text18}
+                      keyboardType = 'numeric'
+                      numberOfLines={1}>
+                      {`${data?.name}`}
+                    </Text>
+                    <Text style={styles.text18}>
+                      {`Tài khoản: ${data?.accountNumber}`}
+                    </Text>
+                    <Text style={styles.text18}>
+                      Số sổ tiết kiệm: 03
+                    </Text>
+                    <Text style={styles.text18}>
+                      Số khoản vay: 01
+                    </Text>
+                  </View>
+                  <Icon name="chevron-right" size={25} color="#024b04"  />
+              </TouchableOpacity>
 
-              }}>
-              <View style={{
-                width: '100%',
-                borderWidth: 1,
-                padding: 20,
-                borderRadius: 15,
-                borderColor: '#024b04',
-                zIndex: 5, marginTop: -60,
-                backgroundColor: '#fff',
-                elevation: 20,
-                shadowColor: '#024b04',
-                shadowOffset: {
-                  width: 3,
-                  height: 5
-                },
-                shadowRadius: 5,
-                shadowOpacity: 0.6
-              }}>
-                <View>
-                  <Text
-                    style={styles.text18}
-                    keyboardType = 'numeric'
-                    numberOfLines={1}>
-                    {`${data?.name}`}
-                  </Text>
-                </View>
-                {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: '3%',}}> */}
-                    <View >
-                      {/* <Text style={styles.text16}></Text> */}
-                      <Text style={styles.text18}>
-                        {`Tài khoản: ${data?.accountNumber}`}
-                      </Text>
-                    </View>
-                    <View >
-                      {/* <Text style={styles.text16}></Text> */}
-                      <Text style={styles.text18}>
-                        {`Số dư: ${data?.surplus} VND`}
-                      </Text>
-                    </View>
-                {/* </View> */}
-              </View>
-            </View>
-            
           </View>
 
           <View style={styles.box2}>
@@ -245,36 +173,15 @@ const Home = ({ route, navigation }) => {
                  </View>
               </View>
 
-              <TouchableOpacity onPress={onListAccount} style={styles.listac}>
-                  <View>
-                    <Text style={{ color: '#000', fontSize: 14, fontWeight: '500' }}>Sổ nguồn</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                      <Text style={{ color: '#024b04', fontSize: 19, fontWeight: 'bold' }}>{`${data?.surplus}`}</Text>
-                      <Text style={{paddingLeft: 2, fontSize: 13, color: '#737373'}}>VND</Text>
-                    </View>
-                  </View>
-                  <Icon name="chevron-right" size={25} color="#024b04" />
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={toggleModal} style={styles.listac}>
-                  <View>
-                    <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
+              <View  style={styles.listac}>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text style={{ color: '#000', fontSize: 16, fontWeight: '500', marginRight: 5, }}>
                       Điểm thưởng
                     </Text>
-                    
+                    <Text style={{ color: '#024b04', fontSize: 18, fontWeight: 'bold' }}>410 Điểm</Text>
                   </View>
-                  <Icon name="chevron-right" size={25} color="#024b04" />
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={() => changeModalVisible(true)} style={styles.listac}>
-                  <View>
-                    <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
-                      Chuyển khoản
-                    </Text>
-                    
-                  </View>
-                  <Icon name="chevron-right" size={25} color="#024b04" />
-              </TouchableOpacity>
+                  
+              </View>
               
           </View>
         </View>
@@ -341,6 +248,26 @@ const styles = StyleSheet.create({
   box1: {
     flex: 0.5,
     justifyContent: 'space-evenly',
+  },
+  infoView: {
+    borderWidth: 1,
+    padding: 20,
+    margin: 15,
+    borderRadius: 15,
+    borderColor: '#024b04',
+    zIndex: 5, marginTop: -60,
+    backgroundColor: '#fff',
+    elevation: 20,
+    shadowColor: '#024b04',
+    shadowOffset: {
+      width: 3,
+      height: 5
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   text18: {
     color: '#024b04', 
