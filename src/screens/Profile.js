@@ -21,6 +21,9 @@ export default function Profile({ route, navigation }) {
         setupdateModalVisible(e)
     }
 
+    let nameKH = `${data?.name}`.split(/[-]/);
+
+
   return (
 
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -65,7 +68,7 @@ export default function Profile({ route, navigation }) {
                             placeholder="Họ và tên"
                             placeholderTextColor={'#948d8d'}
                         >
-                            <Text>{`${data?.name}`}</Text>
+                            <Text>{nameKH[0]}</Text>
                         </TextInput>
                     </View>
                     

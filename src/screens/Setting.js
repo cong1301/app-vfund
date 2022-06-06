@@ -38,6 +38,9 @@ export default function Setting({ route, navigation }) {
     setupdateModalVisible(e)
   }
 
+  let nameKH = `${data?.name}`.split(/[-]/);
+
+
   return (
     <StackSetting.Navigator>
       <StackSetting.Screen name="SettingMain" component={SettingMain} options={{ headerShown: false }} />
@@ -98,7 +101,7 @@ export default function Setting({ route, navigation }) {
                 {/* <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600' }}>{user.name}</Text> */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
                   <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                    {data?.name}
+                    {nameKH[0]}
                   </Text>
                 </View>
               </View>
@@ -182,62 +185,6 @@ export default function Setting({ route, navigation }) {
             </View>
             <Icon name="angle-right" size={24} color="#05610a" />
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="phone" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Liên hệ hotline hỗ trợ
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-
-
-          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="language" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Ngôn ngữ
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => changeModalVisible(true)} style={{
-            marginVertical: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            backgroundColor: '#fff',
-            borderRadius: 10
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="users" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Giới thiệu bạn bè
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
-
-
 
         </View>
 

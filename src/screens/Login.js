@@ -59,26 +59,11 @@ const Login = ({ route, navigation }) => {
   const [checkUser, setCheckUser] = useState(false)
   const [checkPass, setCheckPass] = useState(false)
 
-  const Item = ({ title, icon }) => (
-    <TouchableOpacity onPress={() => changeModalVisible(true)} >
-      
-      <View style={styles.item}>
-        <View style={styles.itemLogo}>
-          <Icon style={styles.userLogo} size={27} color="#024b04" name={icon} />
-        </View>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
   const onLogin = () => {
-    console.log("1")
     if (userName === "") {
-      // Alert.alert('Bạn cần nhập tài khoản!');
       setCheckUser(true)
     } else {
       if (passWord === "") {
-        // Alert.alert('Bạn cần nhập Mật khẩu!');
         setCheckPass(true)
       } else {
         const param = {
@@ -89,8 +74,6 @@ const Login = ({ route, navigation }) => {
       }
     }
   };
-
-  const renderItem = ({ item }) => <Item title={item.title} icon={item.icon} />;
 
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -150,11 +133,9 @@ const Login = ({ route, navigation }) => {
         <View style={styles.box1}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Image style={styles.headerLogo} source={Images.logo} />
-            {/* <Text style={styles.headerText}>VFUND</Text> */}
           </View>
 
         </View>
-        {/* </TouchableWithoutFeedback> */}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.box2}>
             <View
@@ -285,15 +266,7 @@ const Login = ({ route, navigation }) => {
         </TouchableWithoutFeedback>
 
         <View style={styles.box3}>
-          <SafeAreaView style={styles.flatlistcontainer}>
-            <FlatList
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={item => item.so}
-            />
-          </SafeAreaView>
+          
         </View>
 
       </View>
@@ -354,23 +327,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center"
   },
-  box1: {
-    // flex: 2,
-    // marginTop: '10%',
-  },
+
   headerLogo: {
     height: 200,
     width: 200,
     marginTop: '10%',
     borderRadius: 20
   },
-  // headerText: {
-  //   color: '#024b04',
-  //   fontSize: 32,
-  // },
-  box2: {
-    // flex: 3,
-  },
+
   input: {
     height: 40,
     margin: 2,
@@ -428,7 +392,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: 60,
+    
   },
   itemLogo: {
     borderColor: '#024b04',
@@ -449,7 +413,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   box3: {
-
+    marginTop: 60,
   }
 });
 export default Login
