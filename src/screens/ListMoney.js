@@ -4,29 +4,17 @@ import { TabView, SceneMap, TabBar, TextView } from 'react-native-tab-view';
 import Images from '../assets';
 
 const TIENGUI = [
-    {id: 1, TG: '16:53 19/05/2022', tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '20,500,000 VND' },
-    {id: 2, TG: '18:53 20/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '15,000,000 VND'},
-    {id: 113, TG: '16:53 21/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '18,000,000 VND' },
-    {id: 214, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '36,000,000 VND'},
-    {id: 115, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '50,500,000 VND' },
-    {id: 216, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '150,000,000 VND'},
-    {id: 117, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '72,500,000 VND' },
-    {id: 218, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotiengui: '45,000,000 VND'},
+    {id: 1, TG: '16:53 19/05/2022', tk: 'A170265', kyhan: '3', sotiengui: '20,500,000 VND' },
+    {id: 2, TG: '18:53 20/05/2022',  tk: 'A020619', kyhan: '4', sotiengui: '15,000,000 VND'},
+    {id: 113, TG: '16:53 21/05/2022',  tk: 'A386245', kyhan: '5', sotiengui: '18,000,000 VND' },
 ]
 
 const TIENVAY = [
-  {id: 1, TG: '16:53 19/05/2022', tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '15,000,000 VND' },
-  {id: 2, TG: '18:53 20/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '17,800,00 VND'},
-  {id: 113, TG: '16:53 21/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '12,500,000 VND' },
-  {id: 214, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '40,000,000 VND'},
-  {id: 115, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '30,500,000 VND' },
-  {id: 216, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '20,000,000 VND'},
-  {id: 117, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '10,500,000 VND' },
-  {id: 218, TG: '16:53 22/05/2022',  tk: 'NGUYỄN THỊ SƠN - 2653[01125689]', sotienvay: '5,000,000 VND'},
+  {id: 1, TG: '16:53 19/05/2022', tk: 'B023561', thoihan: '3', sotienvay: '15,000,000 VND' },
 ]
 
 const FirstRoute = () =>{ 
-  const renderItemGui = ({ item, TG, tk, sotiengui, index }) => { 
+  const renderItemGui = ({ item, index }) => { 
 
     const inputRange = [
       -1, 
@@ -58,12 +46,13 @@ const FirstRoute = () =>{
         borderWidth: 1,
         margin: 10,
         borderRadius: 10,
+        shadowColor: '#024b04',
         shadowOffset: 
         {
           width: 0,
           height: 10,
         },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.5,
         shadowRadius: 5,
         opacity,
         transform: [{scale}],
@@ -74,12 +63,12 @@ const FirstRoute = () =>{
         </View>
         <View style={styles.separator} />
           <Text style={styles.text}>
-            Tài khoản: {item.tk}
+            Số sổ: {item.tk}
           </Text>
           <Text style={styles.text}>
             Số tiền gửi: <Text style={styles.textGUi}>+{item.sotiengui}</Text>
           </Text>
-        
+          <Text style={{ color: '#000',  fontSize: 17, paddingTop: 8, paddingLeft: 10, paddingBottom: 10}}>Kỳ hạn: {item.kyhan} tháng</Text>
       </Animated.View>
     );
   }
@@ -138,12 +127,13 @@ const SecondRoute = () => {
         borderWidth: 1,
         margin: 10,
         borderRadius: 10,
+        shadowColor: '#024b04',
         shadowOffset: 
         {
           width: 0,
           height: 10,
         },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.5,
         shadowRadius: 5,
         opacity,
         transform: [{scale}],
@@ -156,12 +146,14 @@ const SecondRoute = () => {
             <Text style={styles.TG}>{item.TG}</Text>
         </View>
         <View style={styles.separator} />
-        <Text style={styles.text}>
-          Tài khoản: {item.tk}
-        </Text>
-        <Text style={styles.text}>
-          Số tiền vay: <Text style={styles.textVay}>{item.sotienvay}</Text>
-        </Text>
+          <Text style={styles.text}>
+            Số sổ: {item.tk}
+          </Text>
+          <Text style={styles.text}>
+            Số tiền vay: <Text style={styles.textVay}>+{item.sotienvay}</Text>
+          </Text>
+          <Text style={styles.text}>Thời hạn: {item.thoihan} tháng</Text>
+          <Text style={{ color: '#000',  fontSize: 17, paddingTop: 8, paddingLeft: 10, paddingBottom: 10}}>Ngày trả lãi: 25</Text>
         
       </Animated.View>
     );
@@ -196,7 +188,7 @@ export default function ListMoney({ route, navigation }) {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Danh sách tiền gửi',  },
+    { key: 'first', title: 'Danh sách tiền gửi'},
     { key: 'second', title: 'Danh sách tiền vay' },
   ]);
 
@@ -221,6 +213,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#024b04',
     borderBottomWidth: 1,
     borderColor: '#000',
+    padding: 5,
   },
   indicatorStyle: {
     backgroundColor: "#fff",
@@ -235,17 +228,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   text: {
-    fontSize: 16,
-    color: '#000',
-    padding: 8,
+    color: '#000',  
+    fontSize: 17, 
+    paddingTop: 8, 
+    paddingLeft: 10,
   },
   textGUi: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#47a405',
   },
   textVay: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#ed250e',
   },
