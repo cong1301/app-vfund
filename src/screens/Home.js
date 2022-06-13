@@ -93,7 +93,7 @@ const Home = ({ route, navigation }) => {
     setModalVisible(!isModalVisible);
   };
 
-  let nameKH = `${data?.name}`.split(/[-]/);
+  const nameKH = `${data?.name}`.split(/[-]/);
 
   return (
     <StackHome.Navigator>

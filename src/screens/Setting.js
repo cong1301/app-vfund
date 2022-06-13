@@ -38,7 +38,7 @@ export default function Setting({ route, navigation }) {
     setupdateModalVisible(e)
   }
 
-  let nameKH = `${data?.name}`.split(/[-]/);
+  const nameKH = `${data?.name}`.split(/[-]/);
 
 
   return (
