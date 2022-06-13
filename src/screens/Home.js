@@ -93,6 +93,8 @@ const Home = ({ route, navigation }) => {
     setModalVisible(!isModalVisible);
   };
 
+  const nameKH = `${data?.name}`.split(/[-]/);
+
   return (
     <StackHome.Navigator>
       <StackHome.Screen name="HomeMain" component={HomeMain} options={{ headerShown: false }} />
@@ -147,7 +149,7 @@ const Home = ({ route, navigation }) => {
                       style={styles.text18}
                       keyboardType = 'numeric'
                       numberOfLines={1}>
-                      {`${data?.name}`}
+                       Tên khách hàng: {nameKH[0]}
                     </Text>
                     <Text style={styles.text18}>
                       {`Tài khoản: ${data?.accountNumber}`}
