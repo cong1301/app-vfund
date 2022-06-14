@@ -14,8 +14,6 @@ import { toastConfig } from '../screens/Toast';
 import ListMoney from './ListMoney'
 
 
-import Modal from "react-native-modal";
-import ModalScreen from "./ModalScreen";
 // import NumberFormat from 'react-number-format';
 const width = Dimensions.get('window').width;
 
@@ -24,7 +22,6 @@ const Home = ({ route, navigation }) => {
   const data = useSelector(store => store.product.dataInfoUser)
   const dispatch = useDispatch()
   const [mess, setMess] = useState({ tk: '', sd: '' });
-  // const [modalVisible, setModalVisible] = useState(false);
 
 
   const getToken = async () => {
@@ -47,23 +44,13 @@ const Home = ({ route, navigation }) => {
     }
   }
 
-  const diemthuong = () => {
-    navigation.navigate('GiftScreens');
-  }
-
-  const lichsu = () => {
-    navigation.navigate('HistoryScreens');
-  }
-
   const onListMoney = () => {
     navigation.navigate('ListMoney');
   }
 
-  // const [dataMess, setDataMess] = useState({})
 
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      // Alert.alert('Thông báo!', JSON.stringify(remoteMessage?.data));
       setMess({ tk: remoteMessage?.notification?.body, sd: remoteMessage?.notification?.title })
     });
     return unsubscribe;
@@ -80,18 +67,6 @@ const Home = ({ route, navigation }) => {
   const onLogout = async () => {
     dispatch(clearState())
   }
-
-  const [updateModalVisible, setupdateModalVisible] = useState(false);
-
-  const changeModalVisible = (e) => {
-    setupdateModalVisible(e)
-  }
-
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
 
   const nameKH = `${data?.name}`.split(/[-]/);
 
@@ -112,14 +87,7 @@ const Home = ({ route, navigation }) => {
         showsHorizontalScrollIndicator={false}
         style={styles.container}>
 
-          <Modal
-              isVisible={updateModalVisible}
-              nRequestClose={() => changeModalVisible(false)}
-          >
-            <ModalScreen 
-              changeModalVisible={changeModalVisible}
-            />
-          </Modal>
+         
         <View style={styles.box}>
           <View style={styles.box1}>
               <View style={{
@@ -313,49 +281,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     padding: 10,
     backgroundColor: '#fff',
-  },
-
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    width: '92%',
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#05610a",
-    paddingHorizontal: 20
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 10,
-    textAlign: "center"
   },
  });
 

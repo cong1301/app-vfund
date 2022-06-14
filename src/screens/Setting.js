@@ -6,7 +6,6 @@ import { clearState, insFCMYtokenAPI } from '../store/AuthSlice';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Profile from './Profile'
-import PassWordChange from './PassWordChange';
 import UserNameChange from './UserNameChange';
 import { List, Switch } from 'antd-mobile'
 import {
@@ -46,14 +45,6 @@ export default function Setting({ route, navigation }) {
       <StackSetting.Screen name="SettingMain" component={SettingMain} options={{ headerShown: false }} />
       <StackSetting.Screen name="Profile" component={Profile} options={{
         title: 'Thông tin cá nhân',
-        headerStyle: {
-          backgroundColor: '#024b04',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-      }} />
-      <StackSetting.Screen name="PassWordChange" component={PassWordChange} options={{
-        title: 'Đổi mật khẩu',
         headerStyle: {
           backgroundColor: '#024b04',
         },
@@ -125,24 +116,7 @@ export default function Setting({ route, navigation }) {
               TÀI KHOẢN
             </Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('PassWordChange')}
-            style={{
-              marginVertical: 5,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingHorizontal: 20,
-              paddingVertical: 15,
-              backgroundColor: '#fff',
-              borderRadius: 10
-            }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Icon name="laptop" size={24} color="#000" />
-              <Text style={{ marginLeft: 10, fontWeight: '500', fontSize: 16, color: '#05610a' }}>
-                Đổi mật khẩu
-              </Text>
-            </View>
-            <Icon name="angle-right" size={24} color="#05610a" />
-          </TouchableOpacity>
+         
           <TouchableOpacity onPress={() => navigation.navigate('UserNameChange')} style={{
             marginVertical: 5,
             flexDirection: 'row',

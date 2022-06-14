@@ -77,6 +77,15 @@ export const insFCMYtoken = (params) => {
 export const getInfoUser = () => {
   return instance.get('api/user/getInfoUser')
 }
+
+export const getDeposits = () => {
+  return instance.get('api/deposits/get/user')
+}
+
+export const getLoans = () => {
+  return instance.get('api/loan/get/user')
+}
+
 export const findInfoUser = (creditFundId, query) => {
   return instance.get(`api/user/get/user?creditFundId=${creditFundId}&query=${query}`)
 }

@@ -52,10 +52,6 @@ export default function Profile({ route, navigation }) {
                         alignItems: 'center',}}
                     source={require('../assets/icondangnhap/ducminh.jpg')}
                 />
-                        {/* <Icon color='#cdface' name="user" size={60} /> */}
-                <TouchableOpacity onPress={handleSave} >
-                    <Text style={{fontSize: 16, color: '#024b04', padding: 10, textDecorationLine: 'underline'}}>Đổi ảnh đại diện</Text>
-                </TouchableOpacity>
             </View>
         
 
@@ -83,7 +79,15 @@ export default function Profile({ route, navigation }) {
                         </TextInput>
                     </View>
 
-
+                    <View style={styles.input}>
+                        <Text style={{color: '#5e6163', paddingBottom: 5,}}>Mã khách hàng</Text>
+                        <TextInput
+                            placeholder="Nhập địa mã khách hàng"
+                            placeholderTextColor={'#948d8d'}
+                        >
+                        <Text>{`${data?.code}`}</Text>
+                        </TextInput>
+                    </View>
                     
                     <View style={styles.input}>
                         <Text style={{color: '#5e6163', paddingBottom: 5,}}>Địa chỉ</Text>
@@ -97,9 +101,6 @@ export default function Profile({ route, navigation }) {
 
                 </View>
             </View>
-            <TouchableOpacity onPress={handleSave} style={styles.buttons}>
-                <Text style={{fontSize: 18, color: '#fff', }} >Lưu lại</Text>
-            </TouchableOpacity>
         
         </ScrollView>
     </TouchableWithoutFeedback>
@@ -114,21 +115,20 @@ const styles = StyleSheet.create({
     avatars: {
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 20,
+        marginTop: 20,
     },
     info: {
         flex: 1,
         borderWidth: 1,
         borderRadius: 15,
+        marginTop: 20,
         marginLeft: 20,
         marginRight: 20,
         borderColor: '#024b04',
     },
     infoView: {
-        // marginHorizontal: 20,
         marginLeft: 20,
         marginRight: 20,
-        // marginBottom: 20,
         marginTop: 15,
         marginBottom: 15,
 

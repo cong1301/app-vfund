@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { signInApi } from '../store/AuthSlice'
 import Images from '../assets';
 import * as Animatable from 'react-native-animatable';
-import ModalScreen from "./ModalScreen";
 
 const DATA = [
   {
@@ -81,12 +80,6 @@ const Login = ({ route, navigation }) => {
     setModalVisible(!isModalVisible);
   };
 
-  const [updateModalVisible, setupdateModalVisible] = useState(false);
-
-  const changeModalVisible = (e) => {
-    setupdateModalVisible(e)
-  }
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -121,14 +114,6 @@ const Login = ({ route, navigation }) => {
           </View>
         </Modal>
 
-        <Modal
-            isVisible={updateModalVisible}
-            nRequestClose={() => changeModalVisible(false)}
-        >
-          <ModalScreen 
-            changeModalVisible={changeModalVisible}
-          />
-        </Modal>
 
         <View style={styles.box1}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -224,20 +209,6 @@ const Login = ({ route, navigation }) => {
               
             </View>
             <View style={styles.fixToText}>
-              <TouchableOpacity onPress={() => changeModalVisible(true)}  >
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'white',
-                    borderBottomColor: '#024b04',
-                    marginLeft: 2,
-                    marginRight: 60,
-                  }}>
-                  <Text style={{ marginTop: 25, color: '#024b04', fontSize: 16 }}>
-                    Đăng Ký Tài Khoản
-                  </Text>
-                </View>
-              </TouchableOpacity>
 
               <TouchableOpacity onPress={toggleModal}  >
                 <View

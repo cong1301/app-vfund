@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { View, Animated, StyleSheet, useWindowDimensions, FlatList, SafeAreaView, Text , Image } from 'react-native';
 import { TabView, SceneMap, TabBar, TextView } from 'react-native-tab-view';
 import Images from '../assets';
+import { getDepositsList, getLoansList } from '../store/HomeSlice'
+import { useSelector, useDispatch } from "react-redux";
 
-const TIENGUI = [
-    {id: 1, TG: '16:53 19/05/2022', tk: 'A170265', kyhan: '3', sotiengui: '20,500,000 VND' },
-    {id: 2, TG: '18:53 20/05/2022',  tk: 'A020619', kyhan: '4', sotiengui: '15,000,000 VND'},
-    {id: 113, TG: '16:53 21/05/2022',  tk: 'A386245', kyhan: '5', sotiengui: '18,000,000 VND' },
-]
-
-const TIENVAY = [
-  {id: 1, TG: '16:53 19/05/2022', tk: 'B023561', thoihan: '3', sotienvay: '15,000,000 VND' },
-]
 
 const FirstRoute = () =>{ 
+  const dataDeposits = useSelector(store => store.product.dataListDeposits)
+
+  const TIENGUI = dataDeposits.map((e,i)=>({id: i, TG: `${e?.time}`, laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getDepositsList())
+    // dispatch(getLoansList())
+  }, [])
+
+
   const renderItemGui = ({ item, index }) => { 
 
     const inputRange = [
@@ -63,7 +67,10 @@ const FirstRoute = () =>{
         </View>
         <View style={styles.separator} />
           <Text style={styles.text}>
-            Số sổ: {item.tk}
+            Số hợp đồng tiền gửi: {item.tk}
+          </Text>
+          <Text style={styles.text}>
+            lãi xuất: {item.laixuat}%
           </Text>
           <Text style={styles.text}>
             Số tiền gửi: <Text style={styles.textGUi}>+{item.sotiengui}</Text>
@@ -73,7 +80,7 @@ const FirstRoute = () =>{
     );
   }
   const scrollY = React.useRef(new Animated.Value(0)).current;
-
+  
 
   return(
   <SafeAreaView style={[styles.container, { backgroundColor: '#fff' }]} >
@@ -93,9 +100,16 @@ const FirstRoute = () =>{
 
 const SecondRoute = () => {
 
-  
+  const dataLoans = useSelector(store => store.product.dataListLoans)
 
-  const renderItemVay = ({ item, index, TG, tk, sotienvay }) => {
+  const TIENVAY = dataLoans.map((e,i)=>({id: i, TG: '16:53 19/05/2022', makh: e?.code, tk: e?.contract_number, kyhan: e?.loan_date, laisuat: e?.interest_rate.slice(0,3) ,sodu: e?.surplus }))
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getLoansList())
+  }, [])
+
+
+  const renderItemVay = ({ item, index, }) => {
 
     const inputRange = [
       -1, 
@@ -147,13 +161,18 @@ const SecondRoute = () => {
         </View>
         <View style={styles.separator} />
           <Text style={styles.text}>
-            Số sổ: {item.tk}
+            Số hợp đồng tiền vay: {item.tk}
           </Text>
           <Text style={styles.text}>
-            Số tiền vay: <Text style={styles.textVay}>+{item.sotienvay}</Text>
+            Mã khách hàng: {item.makh}
           </Text>
-          <Text style={styles.text}>Thời hạn: {item.thoihan} tháng</Text>
-          <Text style={{ color: '#000',  fontSize: 17, paddingTop: 8, paddingLeft: 10, paddingBottom: 10}}>Ngày trả lãi: 25</Text>
+          <Text style={styles.text}>
+            Lãi suất: {item.laisuat}%
+          </Text>
+          <Text style={styles.text}>
+            Số tiền vay: <Text style={styles.textVay}>{item.sodu}</Text>
+          </Text>
+          <Text style={{ color: '#000',  fontSize: 17, paddingTop: 8, paddingLeft: 10, paddingBottom: 10}}>Kỳ hạn: {item.kyhan}</Text>
         
       </Animated.View>
     );
@@ -184,6 +203,8 @@ const renderScene = SceneMap({
 
 
 export default function ListMoney({ route, navigation }) {
+
+  
 
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
