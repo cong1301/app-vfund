@@ -139,7 +139,7 @@ android {
         applicationId "com.appvfund"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        // 15-6-2022
+        // Ngày build: 15-6-2022
         // Mỗi lần up lên chplay đẩy versionCode và versionName tăng lên dần
         versionCode 3
         versionName "1.2"
