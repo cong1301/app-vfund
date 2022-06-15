@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
-import { getTodo, updateTodo, getCategory, getInfoUser, getDeposits, getLoans, findInfoUser } from '../services/ApiConfig'
+import { getTodo, updateTodo, getCategory, getInfoUser, getDeposits, getLoans, updateUser, findInfoUser } from '../services/ApiConfig'
 
 const initialState = {
   products: [],
   todo: [],
   categories: [],
   dataInfoUser: [],
+  updateDataInfoUser: [],
   dataListDeposits: [],
   dataListLoans: [],
   findDataInfoUser: [],
@@ -19,9 +20,7 @@ export const getListTodo = createAsyncThunk('todo/getListTodoKey', async (params
   return list;
 });
 export const updateListTodo = createAsyncThunk('todo/updateListTodoKey', async (params, thunkAPI) => {
-  // thunkAPI.dispatch(...)
   const list = await updateTodo(params.id, params.data);
-  // console.log('list', list);
   return list;
 });
 
@@ -37,6 +36,13 @@ export const getDepositsList = createAsyncThunk('todo/deposits', async (params, 
 
 export const getLoansList = createAsyncThunk('todo/loans', async (params, thunkAPI) => {
   const list = await getLoans();
+  return list;
+});
+
+
+export const updateListUser = createAsyncThunk('todo/updateInfoUser', async (params, thunkAPI) => {
+  console.log("vao 1", params)
+  const list = await updateUser(params);
   return list;
 });
 
@@ -84,17 +90,32 @@ export const productSlice = createSlice({
     // },
 
     // update list todo
-    [updateListTodo.fulfilled]: (state, action) => {
+    // [updateListTodo.fulfilled]: (state, action) => {
+    //   state.loading = false;
+    //   state.todo = action.payload.data;
+    // },
+
+    // // Update user
+    // [updateListUser.fulfilled]: (state, action) => {
+    //   state.check = "true"
+    //   console.log("mk thanh cong")
+    //   state.loading = false;
+    //   // state.updateDataInfoUser = true;
+    // },
+
+    [updateListUser.rejected]: (state, action) => {
+      state.check = "false"
+      console.log("that bai")
       state.loading = false;
-      state.todo = action.payload.data;
+      // state.updateDataInfoUser = true;
     },
 
-    
     // get category
     [getInfoUserList.fulfilled]: (state, action) => {
       state.loading = false;
       state.dataInfoUser = action?.payload?.data?.data;
     },
+
     [findInfoUserList.fulfilled]: (state, action) => {
 
       state.loading = false;

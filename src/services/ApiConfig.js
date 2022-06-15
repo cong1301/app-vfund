@@ -42,6 +42,12 @@ instance.interceptors.response.use(function (response) {
     // store.dispatch(reset())
   }
 
+  if (error.response.data.message === "Bạn đã đổi user name") {
+    Alert.alert('Không thể đổi tài khoản mật khẩu');
+    // lam gi đó ở đây: vi dụ như clear token để tự động chuyển sang màn login
+    // store.dispatch(reset())
+  }
+
   if (error.response.data.error === 'Bad credentials') {
     Alert.alert('Tài khoản mật khẩu không đúng');
     // lam gi đó ở đây: vi dụ như clear token để tự động chuyển sang màn login
@@ -84,6 +90,10 @@ export const getDeposits = () => {
 
 export const getLoans = () => {
   return instance.get('api/loan/get/user')
+}
+
+export const updateUser = (params) => {
+  return instance.post(`api/user/update/user?username=${params?.username}&password=${params?.password}`)
 }
 
 export const findInfoUser = (creditFundId, query) => {

@@ -4,21 +4,21 @@ import { TabView, SceneMap, TabBar, TextView } from 'react-native-tab-view';
 import Images from '../assets';
 import { getDepositsList, getLoansList } from '../store/HomeSlice'
 import { useSelector, useDispatch } from "react-redux";
+import moment from 'moment';
 
 
-const FirstRoute = () =>{ 
+const ScreenGui = () =>{ 
   const dataDeposits = useSelector(store => store.product.dataListDeposits)
-
-  const TIENGUI = dataDeposits.map((e,i)=>({id: i, TG: `${e?.time}`, laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
+  const TIENGUI = dataDeposits.map((e,i)=>({id: i, TG: moment(e?.time).format('HH:mm DD-MM-YYYY'), laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getDepositsList())
-    // dispatch(getLoansList())
   }, [])
 
-
   const renderItemGui = ({ item, index }) => { 
+
+
 
     const inputRange = [
       -1, 
@@ -84,6 +84,7 @@ const FirstRoute = () =>{
 
   return(
   <SafeAreaView style={[styles.container, { backgroundColor: '#fff' }]} >
+      {TIENGUI.length > 0 ? (
       <Animated.FlatList
         data={TIENGUI}
         onScroll={Animated.event(
@@ -94,11 +95,18 @@ const FirstRoute = () =>{
         renderItem={renderItemGui}
         keyExtractor={item => item.id}
       />
+      ) : (
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1,}}>
+          <Text style={{fontSize: 17,  color: '#000' }}>
+              Không có dữ liệu
+          </Text>
+        </View>
+    )}
   </SafeAreaView>
 );
 }
 
-const SecondRoute = () => {
+const ScreenVay = () => {
 
   const dataLoans = useSelector(store => store.product.dataListLoans)
 
@@ -181,6 +189,7 @@ const SecondRoute = () => {
   const scrollY = React.useRef(new Animated.Value(0)).current;
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: '#fff' }]} >
+      {TIENVAY.length > 0 ? (
       <Animated.FlatList
           data={TIENVAY}
           onScroll={Animated.event(
@@ -191,14 +200,22 @@ const SecondRoute = () => {
           renderItem={renderItemVay}
           keyExtractor={item => item.id}
         />
+        ) : (
+          <View style={{alignItems: 'center', justifyContent: 'center', flex: 1,}}>
+            <Text style={{fontSize: 17,  color: '#000' }}>
+                Không có dữ liệu
+            </Text>
+          </View>
+          
+      )}
     </SafeAreaView>
   );
   
 }
 
 const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
+  first: ScreenGui,
+  second: ScreenVay,
 });
 
 

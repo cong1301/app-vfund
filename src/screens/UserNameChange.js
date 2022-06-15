@@ -11,47 +11,115 @@ import {
     Text,
     View,
     Image,
+    Pressable,
     SafeAreaView
 } from 'react-native'
 import Images from '../assets';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Animatable from 'react-native-animatable';
+import { updateListUser } from '../store/HomeSlice'
+import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-native-modal";
 import ModalScreen from "./ModalScreen"
 
 
-
 export default function PassWordChange({ route, navigation }) {
 
-
+    const [userName, setUserName] = useState('luu');
     const [checkEye1, setCheckEye1] = useState(true);
     const [checkEye2, setCheckEye2] = useState(true);
-    const [passWordNew, setPassWordNew] = useState('');
-    const [checkPass, setCheckPass] = useState(false)
-    const [rePassWordNew, setRePassWordNew] = useState('');
+    const [passWordNew, setPassWordNew] = useState('123');
+    const [checkPass, setCheckPass] = useState(false);
+    const [checkUser, setCheckUser] = useState(false);
+    const [rePassWordNew, setRePassWordNew] = useState('123');
+    const dispatch = useDispatch();
+
+    const check = useSelector(store => store.product.check)
+    console.log("check", check)
     
-    const handleSave = () => {
-        {
-            passWordNew != rePassWordNew ? setCheckPass(true) : setCheckPass(false)
-        }
-        changeModalVisible(true)
-    }
+
+    const handleSave = () => {   
+        const param = {
+            username: userName,
+            password: passWordNew,
+        }       
+        dispatch(updateListUser(param))
+        
+        
+        // if (check === "false") {
+        //     setModalVisible(true)
+        // }
+        // else {
+        //     if (userName === '' ) {
+        //         setCheckUser(true)
+        //     }  else if (passWordNew != rePassWordNew ) {
+        //         setCheckPass(true)
+        //     } else {
+        //         setCheckPass(false)
+        //         const param = {
+        //             username: userName,
+        //             password: passWordNew,
+        //         }       
+        //         dispatch(updateListUser(param))
+        //         changeModalVisible(true)
+        //     }
+        // }
+        // // if (check === "true") {
+            
+        // // }
+    }   
+
+    const [isModalVisible, setModalVisible] = useState(false);
+    
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+    };
 
     const [updateModalVisible, setupdateModalVisible] = useState(false);
     const changeModalVisible = (e) => {
         setupdateModalVisible(e)
     }
+  
 
     return (
         <View style={styles.container}>
             <Modal
-                isVisible={updateModalVisible}
+            isVisible={updateModalVisible}
                 nRequestClose={() => changeModalVisible(false)}
             >
             <ModalScreen 
                 changeModalVisible={changeModalVisible}
             />
             </Modal>
+
+            <Modal
+          isVisible={isModalVisible}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: '100%', }}>
+                    <Image style={{ width: 50, height: 50, marginRight: 15 }} source={Images.logo} />
+                    <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16, }}>Thông Báo!</Text>
+                </View>
+                <View style={{ alignItems: 'center',}}>
+                    <View style={{ flexDirection: 'row', paddingTop: 15, paddingBottom: 15, alignItems: 'center' }}>                       
+                        <Icon name="alert" color="#f26f04" size={42}  />
+                        <Text style={{ color: '#f26f04', fontWeight: 'bold', fontSize: 20, marginLeft: 10,}}>Bạn đã đổi tài khoản</Text>
+                    </View>
+                </View>
+
+                <View style={{ width: '100%', alignItems: 'flex-end', }}>
+                <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={toggleModal}
+                >
+                    <Text  style={styles.textStyle}>OK</Text>
+                </Pressable>
+                </View>
+            </View>
+          </View>
+        </Modal>
+
             <ScrollView>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.info}>
@@ -63,9 +131,18 @@ export default function PassWordChange({ route, navigation }) {
                                 style={styles.input}
                                 placeholder="Nhập tài khoản đăng nhập mới"
                                 placeholderTextColor={'#948d8d'}
+                                onChangeText={setUserName}
+                                value={userName}
+                                
                               />
-
                             </View>
+                            {checkUser ?
+                                <Animatable.View animation='fadeInLeft' duration={1000}>
+                                    <Text style={{ color: 'red', fontSize: 12, marginLeft: 20 }}>Bạn cần nhập tài khoản</Text>
+                                </Animatable.View>
+                                :
+                                null
+                            }
                             <View style={styles.inputmk}>
                                 <TextInput
                                     secureTextEntry={checkEye1}
@@ -87,6 +164,13 @@ export default function PassWordChange({ route, navigation }) {
                                     }
                                 </TouchableOpacity>
                             </View>
+                            {checkUser ?
+                                <Animatable.View animation='fadeInLeft' duration={1000}>
+                                    <Text style={{ color: 'red', fontSize: 12, marginLeft: 20 }}>Bạn cần nhập mật khẩu</Text>
+                                </Animatable.View>
+                                :
+                                null
+                            }
                             <View style={styles.inputmk}>
                                 <TextInput
                                     secureTextEntry={checkEye2}
@@ -187,4 +271,42 @@ const styles = StyleSheet.create({
         backgroundColor: '#024b04',
         borderRadius: 50,
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        width: '92%',
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        backgroundColor: "#05610a",
+        paddingHorizontal: 20
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
 })

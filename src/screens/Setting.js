@@ -14,10 +14,6 @@ import {
   SetOutline,
 } from 'antd-mobile-icons'
 
-import Modal from "react-native-modal";
-import ModalScreen from "./ModalScreen";
-
-
 
 const StackSetting = createNativeStackNavigator();
 export default function Setting({ route, navigation }) {
@@ -31,11 +27,6 @@ export default function Setting({ route, navigation }) {
     navigation.navigate('Profile');
   }
 
-  const [updateModalVisible, setupdateModalVisible] = useState(false);
-
-  const changeModalVisible = (e) => {
-    setupdateModalVisible(e)
-  }
 
   const nameKH = `${data?.name}`.split(/[-]/);
 
@@ -65,15 +56,6 @@ export default function Setting({ route, navigation }) {
   function SettingMain() {
     return (
       <View>
-        <Modal
-            isVisible={updateModalVisible}
-            nRequestClose={() => changeModalVisible(false)}
-        >
-          <ModalScreen 
-            changeModalVisible={changeModalVisible}
-          />
-        </Modal>
-        
         <View style={{backgroundColor: '#024b04'}}>
           <View style={styles.containerr}>
             <View style={styles.header}>

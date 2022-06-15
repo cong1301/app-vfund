@@ -1,14 +1,17 @@
 import { StyleSheet, Text, Pressable, View, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import Images from '../assets';
+import { clearState } from '../store/AuthSlice';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default function ModalScreen(props) {
 
-  const closeModal = (e) => {
-    props.changeModalVisible(e);
+  const dispatch = useDispatch()
+  const onLogoutmodal = async () => {
+    dispatch(clearState())
   }
 
   return (
@@ -19,19 +22,18 @@ export default function ModalScreen(props) {
                   <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16, }}>Thông Báo!</Text>
               </View>
               <View style={{ alignItems: 'center', }}>
-                  <View style={{ flexDirection: 'row', padding: 15, alignItems: 'center' }}>
-                      <Icon name="wrench" color="red" size={30}  />
-                      <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 20, marginLeft: 15,}}>Hệ thống đang cập nhật</Text>
-                      {/* <Image style={{ width: '100%', height: 150, marginRight: 15 }} source={Images.imgbaotri} /> */}
+                  <View style={{ flexDirection: 'row', paddingTop: 15, paddingRight: 15, paddingBottom: 15, alignItems: 'center' }}>
+                      <MaterialCommunityIcons name="check-circle-outline" color="#63ba37" size={45}  />
+                      <Text style={{ color: '#63ba37', fontWeight: 'bold', fontSize: 20, marginLeft: 10,}}>Đổi mật khẩu thành công</Text>
                   </View>
               </View>
 
               <View style={{ width: '100%', alignItems: 'flex-end', }}>
               <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => closeModal(false)}
+                  onPress={onLogoutmodal}
               >
-                  <Text style={styles.textStyle}>OK</Text>
+                  <Text  style={styles.textStyle}>Đăng nhập lại</Text>
               </Pressable>
               </View>
           </View>
