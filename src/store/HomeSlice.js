@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { Alert, View } from 'react-native';
 import { getTodo, updateTodo, getCategory, getInfoUser, getDeposits, getLoans, updateUser, findInfoUser } from '../services/ApiConfig'
-
+import Images from '../assets';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const initialState = {
   products: [],
   todo: [],
@@ -40,17 +42,17 @@ export const getLoansList = createAsyncThunk('todo/loans', async (params, thunkA
 });
 
 
-export const updateListUser = createAsyncThunk('todo/updateInfoUser', async (params, thunkAPI) => {
-  console.log("vao 1", params)
-  const list = await updateUser(params);
-  return list;
+export const updateListUser = createAsyncThunk('todo/updateInfoUser', async (params, meta, thunkAPI) => {
+  const response = await updateUser(params);
+  console.log("response", response?.data.success)
+  if (response?.data.success === true) {
+    Alert.alert("Thành công");
+  }
+  return response;
 });
 
-
 export const findInfoUserList = createAsyncThunk('todo/findinfoUser', async (creditFundId, query, thunkAPI) => {
-  console.log("params", creditFundId, query)
   const list = await findInfoUser(creditFundId, query);
-  console.log("tim kiem thanh cong", list)
   return list;
 });
 
@@ -90,25 +92,25 @@ export const productSlice = createSlice({
     // },
 
     // update list todo
-    // [updateListTodo.fulfilled]: (state, action) => {
-    //   state.loading = false;
-    //   state.todo = action.payload.data;
-    // },
+    [updateListTodo.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.todo = action.payload.data;
+    },
 
-    // // Update user
+    // Update user
     // [updateListUser.fulfilled]: (state, action) => {
-    //   state.check = "true"
+    //   state.check = true
     //   console.log("mk thanh cong")
     //   state.loading = false;
     //   // state.updateDataInfoUser = true;
     // },
 
-    [updateListUser.rejected]: (state, action) => {
-      state.check = "false"
-      console.log("that bai")
-      state.loading = false;
-      // state.updateDataInfoUser = true;
-    },
+    // [updateListUser.rejected]: (state, action) => {
+    //   state.check = false
+    //   console.log("that bai")
+    //   state.loading = false;
+    //   // state.updateDataInfoUser = true;
+    // },
 
     // get category
     [getInfoUserList.fulfilled]: (state, action) => {
@@ -126,7 +128,7 @@ export const productSlice = createSlice({
       state.loading = false;
       state.dataListDeposits = action?.payload?.data?.data;
     },
-    
+
     [getLoansList.fulfilled]: (state, action) => {
       state.loading = false;
       state.dataListLoans = action?.payload?.data?.data;

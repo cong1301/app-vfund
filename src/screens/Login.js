@@ -206,7 +206,7 @@ const Login = ({ route, navigation }) => {
                   Đăng Nhập
                 </Text>
               </TouchableOpacity>
-              
+
             </View>
             <View style={styles.fixToText}>
 
@@ -237,7 +237,7 @@ const Login = ({ route, navigation }) => {
         </TouchableWithoutFeedback>
 
         <View style={styles.box3}>
-          
+
         </View>
 
       </View>
@@ -363,7 +363,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    
+
   },
   itemLogo: {
     borderColor: '#024b04',

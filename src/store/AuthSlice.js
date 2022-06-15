@@ -10,15 +10,13 @@ const initialState = {
 }
 
 export const signInApi = createAsyncThunk('auth/login', async (params, thunkAPI) => {
-  // thunkAPI.dispatch(...)
   const list = await login(params, { token: 'token' });
-  // console.tron.log("list", list)
   return list;
 });
 
 export const insFCMYtokenAPI = createAsyncThunk('INSFCM', async (params, thunkAPI) => {
   const list = await insFCMYtoken(params);
-  console.log("thành công")
+  console.log("Save FCM")
   return list;
 });
 
