@@ -4,12 +4,13 @@ import { TabView, SceneMap, TabBar, TextView } from 'react-native-tab-view';
 import Images from '../assets';
 import { getDepositsList, getLoansList } from '../store/HomeSlice'
 import { useSelector, useDispatch } from "react-redux";
-import moment from 'moment';
+// import moment from 'moment';
 
 
 const ScreenGui = () =>{ 
   const dataDeposits = useSelector(store => store.product.dataListDeposits)
-  const TIENGUI = dataDeposits.map((e,i)=>({id: i, TG: moment(e?.time).format('HH:mm DD-MM-YYYY'), laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
+  // const TIENGUI = dataDeposits.map((e,i)=>({id: i, TG: moment(e?.time).format('HH:mm DD-MM-YYYY'), laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
+  const TIENGUI = dataDeposits.map((e,i)=>({id: i, laixuat: `${e?.interestRate}`.slice(0,3) ,tk: `${e?.accountNumber}`, kyhan: `${e?.period}`, sotiengui: `${e?.surplus}` }))
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -17,8 +18,6 @@ const ScreenGui = () =>{
   }, [])
 
   const renderItemGui = ({ item, index }) => { 
-
-
 
     const inputRange = [
       -1, 
@@ -63,14 +62,14 @@ const ScreenGui = () =>{
       }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
             <Image source={Images.logo} style={{ width: 30, height: 30, borderRadius: 5, margin: 10 }} />
-            <Text style={styles.TG}>{item.TG}</Text>
+            {/* <Text style={styles.TG}>{item.TG}</Text> */}
         </View>
         <View style={styles.separator} />
           <Text style={styles.text}>
             Số hợp đồng tiền gửi: {item.tk}
           </Text>
           <Text style={styles.text}>
-            lãi xuất: {item.laixuat}%
+            Lãi suất: {item.laixuat}%
           </Text>
           <Text style={styles.text}>
             Số tiền gửi: <Text style={styles.textGUi}>+{item.sotiengui}</Text>
@@ -110,7 +109,7 @@ const ScreenVay = () => {
 
   const dataLoans = useSelector(store => store.product.dataListLoans)
 
-  const TIENVAY = dataLoans.map((e,i)=>({id: i, TG: '16:53 19/05/2022', makh: e?.code, tk: e?.contract_number, kyhan: e?.loan_date, laisuat: e?.interest_rate.slice(0,3) ,sodu: e?.surplus }))
+  const TIENVAY = dataLoans.map((e,i)=>({id: i,  makh: e?.code, tk: e?.contract_number, kyhan: e?.loan_date, laisuat: e?.interest_rate.slice(0,3) ,sodu: e?.surplus }))
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getLoansList())
@@ -165,7 +164,7 @@ const ScreenVay = () => {
             alignItems: 'center',
         }}>
             <Image source={Images.logo} style={{ width: 30, height: 30, borderRadius: 5, margin: 10 }} />
-            <Text style={styles.TG}>{item.TG}</Text>
+            {/* <Text style={styles.TG}>{item.TG}</Text> */}
         </View>
         <View style={styles.separator} />
           <Text style={styles.text}>
